@@ -1,21 +1,35 @@
 package com.skillstorm.telecom.models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
+@Table(name = "plan")
 public class Plan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Long id;
+	
+	@OneToOne
+	@JoinColumn(name = "phone_id")
+	private Phone phone;
 	
 	@Column(name = "name")
 	private String name;
@@ -36,9 +50,11 @@ public class Plan {
 	private String data;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@OneToMany(mappedBy ="plan", cascade = CascadeType.ALL)
+	 
+	private Set<UserPlan> userPlans;
+	
+	
 
 
 	public Plan() {
@@ -48,7 +64,9 @@ public class Plan {
 
 
 
-	public Plan(String name, int rate, String minutes, String text, String international, String data, User user) {
+
+	public Plan(String name, int rate, String minutes, String text, String international, String data,
+			Set<UserPlan> plans) {
 		super();
 		this.name = name;
 		this.rate = rate;
@@ -56,24 +74,30 @@ public class Plan {
 		this.text = text;
 		this.international = international;
 		this.data = data;
-		this.user = user;
+		this.userPlans = plans;
 	}
 
 
 
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
+
+
+
 
 	public String getName() {
 		return name;
 	}
+
 
 
 
@@ -83,41 +107,69 @@ public class Plan {
 
 
 
+
 	public int getRate() {
 		return rate;
 	}
+
+
+
 
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
 
+
+
+
 	public String getMinutes() {
 		return minutes;
 	}
+
+
+
 
 	public void setMinutes(String minutes) {
 		this.minutes = minutes;
 	}
 
+
+
+
 	public String getText() {
 		return text;
 	}
+
+
+
 
 	public void setText(String text) {
 		this.text = text;
 	}
 
-	public String isInternational() {
+
+
+
+	public String getInternational() {
 		return international;
 	}
+
+
+
 
 	public void setInternational(String international) {
 		this.international = international;
 	}
 
+
+
+
 	public String getData() {
 		return data;
 	}
+
+
+
 
 	public void setData(String data) {
 		this.data = data;
@@ -125,17 +177,28 @@ public class Plan {
 
 
 
-	@Override
-	public String toString() {
-		return "Plan [id=" + id + ", rate=" + rate + ", minutes=" + minutes + ", text=" + text + ", international="
-				+ international + ", data=" + data + ", user=" + user + "]";
+
+	public Set<UserPlan> getPlans() {
+		return userPlans;
 	}
 
-	
-	
-	
-	
-	
+
+
+
+	public void setPlans(Set<UserPlan> plans) {
+		this.userPlans = plans;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Plan [id=" + id + ", name=" + name + ", rate=" + rate + ", minutes=" + minutes + ", text=" + text
+				+ ", international=" + international + ", data=" + data + "]";
+	}
+
+
 	
 	
 }

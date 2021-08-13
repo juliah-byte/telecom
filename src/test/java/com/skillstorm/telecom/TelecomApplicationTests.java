@@ -16,16 +16,16 @@ import com.skillstorm.telecom.models.User;
 @SpringBootTest
 class TelecomApplicationTests {
 	
-	private Logger log = Logger.getLogger(TelecomApplicationTests.class);
+	//private Logger log = Logger.getLogger(TelecomApplicationTests.class);
 	//private UserRepository repository1;
 	
 	@Autowired
-	private PlanRepository repository;
+	//private PlanRepository repository;
 
 	@Test
 	void contextLoads() {
-		Plan plan = repository.save(new Plan("Premium", 35, "limited", "limited", "limited", "limited", new User(1,"Jetta101", "passWord1", "James", "Smith", "jazy1@gmail.com")));
-		log.debug(plan);
+		//Plan plan = repository.save(new Plan("Premium", 35, "limited", "limited", "limited", "limited", new User(1,"Jetta101", "passWord1", "James", "Smith", "jazy1@gmail.com",2, 100 )));
+		//log.debug(plan);
 		//Plan plan = repository.save(new Plan(35, "limited", "limited", "unavailable", "limited"));
 	}
 

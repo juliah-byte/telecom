@@ -2,15 +2,20 @@ package com.skillstorm.telecom.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+
 
 @Entity
+@Table(name = "user")
 public class User {
 	
 	
@@ -18,6 +23,12 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private int id;
+	
+	
+	@OneToMany(mappedBy ="user", cascade = CascadeType.ALL)
+
+	 
+	private Set<UserPlan> userPlans;
 	
 	@Column(name = "username")
 	private String username;
@@ -33,80 +44,154 @@ public class User {
 	
 	@Column(name = "email")
 	private String email;
+	 
+	@Column(name = "lines")
+	private int lines;
+	
+	@Column(name = "balance")
+	private int balance;
 	
 	
-	@OneToMany(mappedBy = "user")
-	private Set<Plan> plans;
+	
+	/**@OneToMany(mappedBy = "user")*/
+	
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String username, String password, String firstName, String lastName, String email) {
+
+
+	public User(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName, String email,
+			int lines, int balance) {
 		super();
-		this.id = id;
+		this.userPlans = userPlans;
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		//this.plans = plans;
+		this.lines = lines;
+		this.balance = balance;
 	}
+
+
 
 	public int getId() {
 		return id;
 	}
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+
+
+	public Set<UserPlan> getPlans() {
+		return userPlans;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+
+	public void setPlans(Set<UserPlan> userPlans) {
+		this.userPlans = userPlans;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public String getUsername() {
 		return username;
 	}
 
+
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
+
+	public int getLines() {
+		return lines;
+	}
+
+
+
+	public void setLines(int lines) {
+		this.lines = lines;
+	}
+
+
+
+	public int getBalance() {
+		return balance;
+	}
+
+
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", plans=" + plans + "]";
+				+ ", lastName=" + lastName + ", email=" + email + ", lines=" + lines + ", balance=" + balance + "]";
 	}
+
 
 	
 	
