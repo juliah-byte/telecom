@@ -8,7 +8,6 @@ import { RegisterService } from '../register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  users: User[] = [];
   user: User = new User("", "", "", "", "");
 
   constructor(private service: RegisterService) { }
@@ -19,11 +18,8 @@ export class RegisterComponent implements OnInit {
     });
     console.log(this.user);
   }
+
   ngOnInit(): void {
-    this.service.findAll().subscribe((data) => {
-      this.users = data;
-      console.log(this.users);
-    });
     
   }
 
