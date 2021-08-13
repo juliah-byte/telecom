@@ -9,15 +9,10 @@ import { User } from './models/User';
 })
 export class RegisterService {
 
-  url = 'localhost:8080';
+  url = 'http://localhost:62345/login';
 
   constructor(private httpClient: HttpClient) { }
 
-  findAll() : Observable<User[]>{
-
-    return this.httpClient.get<User[]>(this.url);
-
-  }
   save(user: User) : Observable<User> {
     return this.httpClient.post<User>(this.url, user);
   }

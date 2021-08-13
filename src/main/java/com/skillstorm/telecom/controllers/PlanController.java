@@ -15,7 +15,6 @@ public class PlanController {
 	
 	@Autowired
 	private PlanRepository repository;
-
 	
 	@GetMapping
 	public List<Plan> findAll(){
