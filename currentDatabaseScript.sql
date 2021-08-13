@@ -1,6 +1,11 @@
-#select * from User;
-#insert into user(username, password, first_name, last_name, email)
-#values("Jetta10", "passWord1", "James", "Smith", "jazy1@gmail.com" );
+
+CREATE TABLE `phones` (
+  `phone_id` int NOT NULL,
+  `number` varchar(45) DEFAULT NULL,
+  `device` varchar(45) DEFAULT NULL,
+  `numbers` int DEFAULT NULL,
+  PRIMARY KEY (`phone_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `plan` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -9,12 +14,12 @@ CREATE TABLE `plan` (
   `minutes` varchar(255) DEFAULT NULL,
   `rate` int DEFAULT NULL,
   `text` varchar(255) DEFAULT NULL,
-  `user_id` int DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `phone_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK271ok4ss5pcte25w6o3hvv60x` (`user_id`),
-  CONSTRAINT `FK271ok4ss5pcte25w6o3hvv60x` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK6v9oyhv17wp72rf92m6pblsgp` (`phone_id`),
+  CONSTRAINT `FK6v9oyhv17wp72rf92m6pblsgp` FOREIGN KEY (`phone_id`) REFERENCES `phones` (`phone_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `user` (
   `user_id` int NOT NULL AUTO_INCREMENT,
@@ -23,9 +28,18 @@ CREATE TABLE `user` (
   `last_name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
+  `balance` int DEFAULT NULL,
+  `lines` int DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-insert into plan(name, rate, minutes, international, data, text, user_id)
-values("Basic",35 , "limited", "limited", "limited", "limited", 1);
-insert into plan(name, rate, minutes, international, data, text)
-values("Premimum", 45 , "Standard", "Standard", "Standard", "limited");
+
+CREATE TABLE `user_plan` (
+  `junc_id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `plan_id` int DEFAULT NULL,
+  PRIMARY KEY (`junc_id`),
+  KEY `FKfgwof219hqbrb6am5awwan8r2` (`plan_id`),
+  KEY `FKr1gojepx9qoalgmd17gurr1dl` (`user_id`),
+  CONSTRAINT `FKfgwof219hqbrb6am5awwan8r2` FOREIGN KEY (`plan_id`) REFERENCES `plan` (`id`),
+  CONSTRAINT `FKr1gojepx9qoalgmd17gurr1dl` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
