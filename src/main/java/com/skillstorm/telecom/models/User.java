@@ -22,7 +22,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
-	private int id;
+	private Long id;
 	
 	
 	@OneToMany(mappedBy ="user", cascade = CascadeType.ALL)
@@ -46,10 +46,10 @@ public class User {
 	private String email;
 	 
 	@Column(name = "lines")
-	private int lines;
+	private Long lines;
 	
 	@Column(name = "balance")
-	private int balance;
+	private Long balance;
 	
 	
 	
@@ -64,7 +64,7 @@ public class User {
 
 
 	public User(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName, String email,
-			int lines, int balance) {
+			Long lines, Long balance) {
 		super();
 		this.userPlans = userPlans;
 		this.username = username;
@@ -78,13 +78,13 @@ public class User {
 
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -162,25 +162,25 @@ public class User {
 
 
 
-	public int getLines() {
+	public Long getLines() {
 		return lines;
 	}
 
 
 
-	public void setLines(int lines) {
+	public void setLines(Long lines) {
 		this.lines = lines;
 	}
 
 
 
-	public int getBalance() {
+	public Long getBalance() {
 		return balance;
 	}
 
 
 
-	public void setBalance(int balance) {
+	public void setBalance(Long balance) {
 		this.balance = balance;
 	}
 
