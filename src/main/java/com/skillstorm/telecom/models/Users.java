@@ -21,7 +21,14 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
+<<<<<<< HEAD:src/main/java/com/skillstorm/telecom/models/Users.java
 	private int id;
+=======
+	private Long id;
+	
+	
+	@OneToMany(mappedBy ="user", cascade = CascadeType.ALL)
+>>>>>>> 02a03ca89d946f225fa58a5fb550501a278a3b71:src/main/java/com/skillstorm/telecom/models/User.java
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<UserPlan> userPlans = new HashSet<UserPlan>();
@@ -42,10 +49,22 @@ public class Users {
 	private String email;
 
 	@Column(name = "lines")
+<<<<<<< HEAD:src/main/java/com/skillstorm/telecom/models/Users.java
 	private int lines;
 
 	@Column(name = "balance")
 	private int balance;
+=======
+	private Long lines;
+	
+	@Column(name = "balance")
+	private Long balance;
+	
+	
+	
+	/**@OneToMany(mappedBy = "user")*/
+	
+>>>>>>> 02a03ca89d946f225fa58a5fb550501a278a3b71:src/main/java/com/skillstorm/telecom/models/User.java
 
 	/** @OneToMany(mappedBy = "user") */
 
@@ -54,8 +73,15 @@ public class Users {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD:src/main/java/com/skillstorm/telecom/models/Users.java
 	public Users(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName,
 			String email, int lines, int balance) {
+=======
+
+
+	public User(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName, String email,
+			Long lines, Long balance) {
+>>>>>>> 02a03ca89d946f225fa58a5fb550501a278a3b71:src/main/java/com/skillstorm/telecom/models/User.java
 		super();
 		this.userPlans = userPlans;
 		this.username = username;
@@ -67,11 +93,23 @@ public class Users {
 		this.balance = balance;
 	}
 
+<<<<<<< HEAD:src/main/java/com/skillstorm/telecom/models/Users.java
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
+=======
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+>>>>>>> 02a03ca89d946f225fa58a5fb550501a278a3b71:src/main/java/com/skillstorm/telecom/models/User.java
 		this.id = id;
 	}
 
@@ -123,6 +161,7 @@ public class Users {
 		this.email = email;
 	}
 
+<<<<<<< HEAD:src/main/java/com/skillstorm/telecom/models/Users.java
 	public int getLines() {
 		return lines;
 	}
@@ -136,6 +175,29 @@ public class Users {
 	}
 
 	public void setBalance(int balance) {
+=======
+
+
+	public Long getLines() {
+		return lines;
+	}
+
+
+
+	public void setLines(Long lines) {
+		this.lines = lines;
+	}
+
+
+
+	public Long getBalance() {
+		return balance;
+	}
+
+
+
+	public void setBalance(Long balance) {
+>>>>>>> 02a03ca89d946f225fa58a5fb550501a278a3b71:src/main/java/com/skillstorm/telecom/models/User.java
 		this.balance = balance;
 	}
 
