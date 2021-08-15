@@ -1,5 +1,6 @@
 package com.skillstorm.telecom.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,58 +14,48 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
-
 @Entity
-@Table(name = "user")
-public class User {
-	
-	
+@Table(name = "users")
+public class Users {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private int id;
-	
-	
-	@OneToMany(mappedBy ="user", cascade = CascadeType.ALL)
 
-	 
-	private Set<UserPlan> userPlans;
-	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<UserPlan> userPlans = new HashSet<UserPlan>();
+
 	@Column(name = "username")
 	private String username;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "first_name")
 	private String firstName;
-	
+
 	@Column(name = "last_name")
 	private String lastName;
-	
+
 	@Column(name = "email")
 	private String email;
-	 
+
 	@Column(name = "lines")
 	private int lines;
-	
+
 	@Column(name = "balance")
 	private int balance;
-	
-	
-	
-	/**@OneToMany(mappedBy = "user")*/
-	
 
-	public User() {
+	/** @OneToMany(mappedBy = "user") */
+
+	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public User(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName, String email,
-			int lines, int balance) {
+	public Users(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName,
+			String email, int lines, int balance) {
 		super();
 		this.userPlans = userPlans;
 		this.username = username;
@@ -75,116 +66,78 @@ public class User {
 		this.lines = lines;
 		this.balance = balance;
 	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public Set<UserPlan> getPlans() {
 		return userPlans;
 	}
 
-
-
 	public void setPlans(Set<UserPlan> userPlans) {
 		this.userPlans = userPlans;
 	}
-
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
-
 
 	public String getLastName() {
 		return lastName;
 	}
 
-
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public int getLines() {
 		return lines;
 	}
 
-
-
 	public void setLines(int lines) {
 		this.lines = lines;
 	}
-
-
 
 	public int getBalance() {
 		return balance;
 	}
 
-
-
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -192,7 +145,4 @@ public class User {
 				+ ", lastName=" + lastName + ", email=" + email + ", lines=" + lines + ", balance=" + balance + "]";
 	}
 
-
-	
-	
 }

@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { User } from './models/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  url = 'http://localhost:62345/register';
+  user: User = new User("", "", "", "", "");
+  users = [];
+  url = 'http://localhost:62345/login';
 
   constructor(private httpClient: HttpClient) { }
 
-  validate() {
+  validate(user: User) : Observable<User[]> {
+    this.user = user;  
+    console.log(user.username + user.password);
+    return this.httpClient.get<User[]>(this.url);
     
-  }
+  };
+  
 }

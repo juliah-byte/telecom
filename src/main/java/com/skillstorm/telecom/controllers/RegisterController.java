@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.telecom.data.UserRepository;
-import com.skillstorm.telecom.models.User;
+import com.skillstorm.telecom.models.Users;
 import com.skillstorm.telecom.services.RegisterService;
 
 @RestController
@@ -31,12 +31,12 @@ public class RegisterController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> save(@RequestBody User user) {
+	public ResponseEntity<Users> save(@RequestBody Users user) {
 		System.out.println("Registering user");
 		
-		List<User> users = repository.findAll();
+		List<Users> users = repository.findAll();
 		
-		for(User u : users)
+		for(Users u : users)
 		{
 			if(u.getUsername().equals(user.getUsername()))
 			{

@@ -13,70 +13,68 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "phones")
 public class Phone {
-	
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name = "phone_id")
-		private int id;
-		
-		@OneToOne
-		@JoinColumn(name = "phone_id")
-		private Plan plan;
 
-		@Column(name = "numbers")
-		private int number;
-		
-		@Column(name = "device")
-		private String device;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "phone_id")
+	private int id;
 
-		public Phone() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+	@ManyToOne
+	@JoinColumn(name = "phone_id", insertable = false, updatable = false)
+	private Plan plan;
 
-		public Phone(int number, String device) {
-			super();
-			this.number = number;
-			this.device = device;
-		}
+	@Column(name = "number")
+	private String number;
 
-		public int getId() {
-			return id;
-		}
+	@Column(name = "device")
+	private String device;
 
-		public void setId(int id) {
-			this.id = id;
-		}
+	public Phone() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		public int getNumber() {
-			return number;
-		}
+	public Phone(String number, String device) {
+		super();
+		this.number = number;
+		this.device = device;
+	}
 
-		public void setNumber(int number) {
-			this.number = number;
-		}
+	public int getId() {
+		return id;
+	}
 
-		public String getDevice() {
-			return device;
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public void setDevice(String device) {
-			this.device = device;
-		}
-		
+	public String getNumber() {
+		return number;
+	}
 
-		public Plan getPlan() {
-			return plan;
-		}
+	public void setNumber(String number) {
+		this.number = number;
+	}
 
-		public void setPlan(Plan plan) {
-			this.plan = plan;
-		}
+	public String getDevice() {
+		return device;
+	}
 
-		@Override
-		public String toString() {
-			return "Phones [id=" + id + ", number=" + number + ", device=" + device + "]";
-		}
-		
-		
+	public void setDevice(String device) {
+		this.device = device;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	@Override
+	public String toString() {
+		return "Phones [id=" + id + ", number=" + number + ", device=" + device + "]";
+	}
+
 }

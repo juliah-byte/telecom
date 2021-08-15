@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.telecom.data.UserRepository;
-import com.skillstorm.telecom.models.User;
+import com.skillstorm.telecom.models.Users;
 
 @Service
 public class RegisterService {
@@ -15,14 +15,14 @@ public class RegisterService {
 	private UserRepository repository;
 	
 	public RegisterService() {
-		System.out.println("Searching database");
+		
 	}
 	
-	public User save(User user) {		
+	public Users save(Users user) {		
 		return repository.save(user);
 	}
 	
-	public List<User> findAll()
+	public List<Users> findAll()
 	{
 		return repository.findAll();
 	}

@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.skillstorm.telecom.data.PlanRepository;
 //import com.skillstorm.telecom.data.UserRepository;
 import com.skillstorm.telecom.models.Plan;
-import com.skillstorm.telecom.models.User;
+import com.skillstorm.telecom.models.Users;
 
 
 @ContextConfiguration

@@ -1,9 +1,7 @@
-
 CREATE TABLE `phones` (
   `phone_id` int NOT NULL,
   `number` varchar(45) DEFAULT NULL,
   `device` varchar(45) DEFAULT NULL,
-  `numbers` int DEFAULT NULL,
   PRIMARY KEY (`phone_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -21,7 +19,7 @@ CREATE TABLE `plan` (
   CONSTRAINT `FK6v9oyhv17wp72rf92m6pblsgp` FOREIGN KEY (`phone_id`) REFERENCES `phones` (`phone_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
@@ -41,5 +39,5 @@ CREATE TABLE `user_plan` (
   KEY `FKfgwof219hqbrb6am5awwan8r2` (`plan_id`),
   KEY `FKr1gojepx9qoalgmd17gurr1dl` (`user_id`),
   CONSTRAINT `FKfgwof219hqbrb6am5awwan8r2` FOREIGN KEY (`plan_id`) REFERENCES `plan` (`id`),
-  CONSTRAINT `FKr1gojepx9qoalgmd17gurr1dl` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+  CONSTRAINT `FKr1gojepx9qoalgmd17gurr1dl` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
