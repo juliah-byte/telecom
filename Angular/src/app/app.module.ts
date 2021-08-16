@@ -15,6 +15,7 @@ import { AccountComponent } from './account/account.component';
 import { PlanTabComponent } from './plan-tab/plan-tab.component';
 import { BillTabComponent } from './bill-tab/bill-tab.component';
 import { DeviceComponent } from './device/device.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { DeviceComponent } from './device/device.component';
     AccountComponent,
     PlanTabComponent,
     BillTabComponent,
-    DeviceComponent
+    DeviceComponent,
+    NavigationComponent
+
   ],
   imports: [
     BrowserModule,
