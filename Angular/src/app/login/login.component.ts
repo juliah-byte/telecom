@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { User } from '../models/User';
 
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   user: User = new User("", "", "", "", "");
   users: User[] = [];
 
-  constructor(private service: LoginService) { }
+  constructor(private service: LoginService, private router: Router) { }
 
   validate(): void {
 
@@ -21,11 +22,14 @@ export class LoginComponent implements OnInit {
     this.service.findAll().subscribe(allUsers => {
       this.users = allUsers;
       for(var i = 0, l = this.users.length; i < l; i++) {
-        console.log("Iteration " + i);
-        console.log(this.users[i].username + " " + this.users[i].password);
-        console.log(this.user.username + " " + this.user.password);
+        // console.log("Iteration " + i);
+        // console.log(this.users[i].username + " " + this.users[i].password);
+        // console.log(this.user.username + " " + this.user.password);
         if((this.users[i].username == uName) && (this.users[i].password == pass)) {
           console.log("Login Successful");
+          sessionStorage.setItem('user', uName);
+          sessionStorage.setItem('password', pass);
+          this.router.navigate(['/Account']);
         }
       }
 
@@ -36,6 +40,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem('user'));
+    console.log(sessionStorage.getItem('password'));
   }
+
 
 }

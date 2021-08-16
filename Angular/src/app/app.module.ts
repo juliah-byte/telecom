@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AccountComponent } from './account/account.component';
     LoginComponent,
     SummaryComponent,
     RegisterComponent,
-    AccountComponent
+    AccountComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
