@@ -41,7 +41,7 @@ public class Users {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "lines")
+	@Column(name = "numlines")
 	private Long lines;
 
 	@Column(name = "balance")
