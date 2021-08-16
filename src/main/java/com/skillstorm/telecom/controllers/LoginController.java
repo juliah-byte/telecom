@@ -29,9 +29,10 @@ public class LoginController {
 
 	@GetMapping
 	public ResponseEntity<List<Users>> validate() {
-		System.out.println("Controller reached");
+		System.out.println("Login Controller reached");
 		
-		return null;
+		
+		return new ResponseEntity<List<Users>>(service.findAll(), HttpStatus.OK);
 	}
 
 }

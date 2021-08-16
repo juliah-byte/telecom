@@ -22,7 +22,7 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private Long id;
-	
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<UserPlan> userPlans = new HashSet<UserPlan>();
 
@@ -43,13 +43,9 @@ public class Users {
 
 	@Column(name = "lines")
 	private Long lines;
-	
+
 	@Column(name = "balance")
 	private Long balance;
-	
-	
-	
-	/**@OneToMany(mappedBy = "user")*/
 
 	/** @OneToMany(mappedBy = "user") */
 
@@ -57,11 +53,9 @@ public class Users {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
-
-	public Users(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName, String email,
-			Long lines, Long balance) {
+	public Users(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName,
+			String email, Long lines, Long balance) {
 		this.userPlans = userPlans;
 		this.username = username;
 		this.password = password;
@@ -71,14 +65,10 @@ public class Users {
 		this.lines = lines;
 		this.balance = balance;
 	}
-	
-
 
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public void setId(Long id) {
 		this.id = id;
@@ -132,22 +122,20 @@ public class Users {
 		return lines;
 	}
 
-
-
 	public void setLines(Long lines) {
 		this.lines = lines;
 	}
-
-
 
 	public Long getBalance() {
 		return balance;
 	}
 
-
-
 	public void setBalance(Long balance) {
 		this.balance = balance;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

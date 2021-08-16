@@ -47,11 +47,13 @@ public class PlanController {
 	
 	@GetMapping("/user/id/{id}/balance")
 	public Long getBalance(@PathVariable Long id) {
-		return repository1.findByBalance(id);
+//		return repository1.findByBalance(id);
+		return null;
 	}
 	
 	@GetMapping("/user/id/{id}/lines")
 	public Long getLine(@PathVariable Long id) {
-		return repository1.findByLine(id);
+//		return repository1.findByLine(id);
+		return null;
 	}
 }

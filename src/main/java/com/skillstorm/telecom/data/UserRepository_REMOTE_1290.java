@@ -7,12 +7,13 @@ import org.springframework.stereotype.Repository;
 import com.skillstorm.telecom.models.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, Long> {
+
+public interface UserRepository extends JpaRepository<Users, Long>{
 
 	@Query("select u.balance from Users u where u.id = ?1")
-	Long findByBalance(Long id);
-
+	Long findByBalance(Long id);	
+	
 	@Query("select u.lines from Users u where u.id = ?1")
 	Long findByLine(Long id);
-
+	
 }
