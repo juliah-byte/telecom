@@ -21,7 +21,7 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
-	private Long id;	
+	private Long id;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<UserPlan> userPlans = new HashSet<UserPlan>();
@@ -41,12 +41,12 @@ public class Users {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "numlines")
-	private int lines;
+	@Column(name = "lines")
+	private Long lines;
 
 	@Column(name = "balance")
-	private int balance;
-	
+	private Long balance;
+
 	/** @OneToMany(mappedBy = "user") */
 
 	public Users() {
@@ -55,17 +55,15 @@ public class Users {
 	}
 
 	public Users(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName,
-			String email, int lines, int balance) {
-
-			super();
-			this.userPlans = userPlans;
-			this.username = username;
-			this.password = password;
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.email = email;
-			this.lines = lines;
-			this.balance = balance;
+			String email, Long lines, Long balance) {
+		this.userPlans = userPlans;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.lines = lines;
+		this.balance = balance;
 	}
 
 	public Long getId() {
@@ -120,24 +118,24 @@ public class Users {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getLines() {
+	public Long getLines() {
 		return lines;
 	}
 
-	public void setLines(int lines) {
+	public void setLines(Long lines) {
 		this.lines = lines;
 	}
 
-	public int getBalance() {
+	public Long getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(Long balance) {
 		this.balance = balance;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
