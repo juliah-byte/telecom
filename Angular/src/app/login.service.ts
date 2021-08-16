@@ -8,17 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  user: User = new User("", "", "", "", "");
-  users = [];
   url = 'http://localhost:62345/login';
-
+  users: User[] = [];
   constructor(private httpClient: HttpClient) { }
 
-  validate(user: User) : Observable<User[]> {
-    this.user = user;  
-    console.log(user.username + user.password);
-    return this.httpClient.get<User[]>(this.url);
-    
+  findAll() : Observable<User[]> {
+    // console.log("Inside Service");
+    return this.httpClient.get<User[]>(this.url);    
   };
   
 }

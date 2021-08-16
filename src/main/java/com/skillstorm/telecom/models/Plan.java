@@ -36,7 +36,7 @@ public class Plan {
 	private String name;
 
 	@Column(name = "rate")
-	private int rate;
+	private long rate;
 
 	@Column(name = "minutes")
 	private String minutes;
@@ -86,7 +86,7 @@ public class Plan {
 		this.name = name;
 	}
 
-	public int getRate() {
+	public Long getRate() {
 		return rate;
 	}
 

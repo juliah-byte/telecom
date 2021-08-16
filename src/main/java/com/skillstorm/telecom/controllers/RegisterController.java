@@ -21,9 +21,6 @@ import com.skillstorm.telecom.services.RegisterService;
 public class RegisterController {
 	
 	@Autowired
-	UserRepository repository;
-	
-	@Autowired
 	private RegisterService service;
 	
 	public RegisterController() {
@@ -34,13 +31,13 @@ public class RegisterController {
 	public ResponseEntity<Users> save(@RequestBody Users user) {
 		System.out.println("Registering user");
 		
-		List<Users> users = repository.findAll();
+		List<Users> users = service.findAll();
 		
 		for(Users u : users)
 		{
 			if(u.getUsername().equals(user.getUsername()))
 			{
-				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}
 		

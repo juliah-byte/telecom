@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skillstorm.telecom.data.PlanRepository;
 import com.skillstorm.telecom.data.UserRepository;
 import com.skillstorm.telecom.models.Plan;
-import com.skillstorm.telecom.models.User;
+import com.skillstorm.telecom.models.Users;
 
 @RestController
 public class PlanController {
@@ -41,17 +41,19 @@ public class PlanController {
 	//User
 		
 	@GetMapping("/user/id/{id}")
-	public Optional<User> getByUserId(@PathVariable Long id){
+	public Optional<Users> getByUserId(@PathVariable Long id){
 		return repository1.findById(id);
 	}
 	
 	@GetMapping("/user/id/{id}/balance")
 	public Long getBalance(@PathVariable Long id) {
-		return repository1.findByBalance(id);
+//		return repository1.findByBalance(id);
+		return null;
 	}
 	
 	@GetMapping("/user/id/{id}/lines")
 	public Long getLine(@PathVariable Long id) {
-		return repository1.findByLine(id);
+//		return repository1.findByLine(id);
+		return null;
 	}
 }
