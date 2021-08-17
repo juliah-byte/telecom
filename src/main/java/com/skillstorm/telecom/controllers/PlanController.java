@@ -56,4 +56,9 @@ public class PlanController {
 //		return repository1.findByLine(id);
 		return null;
 	}
+	
+	@DeleteMapping("/user/id/{id}/phone/{phone_id}"){
+		return repository1.delete(phone_id);
+	}
+	
 }

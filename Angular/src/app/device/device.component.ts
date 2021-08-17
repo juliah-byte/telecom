@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DeviceService } from '../device.service';
 
 @Component({
   selector: 'app-device',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceComponent implements OnInit {
 
-  constructor() { }
 
+
+  constructor(private service: DeviceService) {
+   }
+
+  deviceList: Device[];
+  
   ngOnInit(): void {
+    this.service.findAll().subscribe((data) => {
+      this.deviceList = data;
+      console.log(this.deviceList);
+    });
   }
 
 }
