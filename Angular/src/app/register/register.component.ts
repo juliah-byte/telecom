@@ -6,22 +6,22 @@ import { RegisterService } from '../register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  user: User = new User("", "", "", "", "");
+  user: User = new User('', '', '', '', '');
 
-  constructor(private formBuilder: FormBuilder, private service: RegisterService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: RegisterService
+  ) {}
 
   save(): void {
-    this.service.save(this.user).subscribe(data => {
+    this.service.save(this.user).subscribe((data) => {
       console.log(data);
     });
     console.log(this.user);
   }
 
-  ngOnInit(): void {
-    
-  }
-
+  ngOnInit(): void {}
 }

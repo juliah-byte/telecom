@@ -22,7 +22,15 @@ public class Plan {
 	@Column(name = "id")
 	private Long id;
 
+<<<<<<< HEAD
 	@Column(name = "name")
+=======
+	@OneToMany
+	@JoinColumn(name = "phone_id")
+	private Set<Phone> phone = new HashSet<Phone>();
+
+	@Column(name = "plan_name")
+>>>>>>> 8ba1a5f9bf5486d88f9040ba91de0f18f684c9e9
 	private String name;
 
 	@Column(name = "rate")
@@ -31,13 +39,13 @@ public class Plan {
 	@Column(name = "minutes")
 	private String minutes;
 
-	@Column(name = "text")
+	@Column(name = "plan_text")
 	private String text;
 
 	@Column(name = "international")
 	private String international;
 
-	@Column(name = "data")
+	@Column(name = "plan_data")
 	private String data;
 
 	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)

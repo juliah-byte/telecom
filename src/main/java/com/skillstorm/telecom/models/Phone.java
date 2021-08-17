@@ -23,7 +23,7 @@ public class Phone {
 	@JoinColumn(name = "phone_id", insertable = false, updatable = false)
 	private Plan plan;
 
-	@Column(name = "number")
+	@Column(name = "pnumber")
 	private String number;
 
 	@Column(name = "device")
