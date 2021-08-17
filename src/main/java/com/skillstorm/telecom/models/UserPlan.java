@@ -32,7 +32,7 @@ public class UserPlan {
 	private int planId;
 
 	@ManyToOne
-	@JoinColumn(name = "plan_id", referencedColumnName = "id", insertable = false, updatable = false)
+	@JoinColumn(name = "plan_id", referencedColumnName = "plan_id", insertable = false, updatable = false)
 	private Plan plan;
 
 	/**

@@ -7,3 +7,5 @@ class Device{
         this.device = device;
     }
 }
+
+export default Device;

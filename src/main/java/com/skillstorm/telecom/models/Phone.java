@@ -20,8 +20,8 @@ public class Phone {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "phone_id", insertable = false, updatable = false)
-	private Plan plan;
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	private Users user;
 
 	@Column(name = "pnumber")
 	private String number;
@@ -64,12 +64,13 @@ public class Phone {
 		this.device = device;
 	}
 
-	public Plan getPlan() {
-		return plan;
+	
+	public Users getUser() {
+		return user;
 	}
 
-	public void setPlan(Plan plan) {
-		this.plan = plan;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	@Override

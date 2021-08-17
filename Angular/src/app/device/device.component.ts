@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../device.service';
-
+import Device from '../models/Device';
 
 @Component({
   selector: 'app-device',

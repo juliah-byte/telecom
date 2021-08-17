@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.skillstorm.telecom.data.PhoneRepository;
 import com.skillstorm.telecom.data.PlanRepository;
 import com.skillstorm.telecom.data.UserRepository;
 import com.skillstorm.telecom.models.Plan;
@@ -20,6 +22,9 @@ public class PlanController {
 	
 	@Autowired
 	private UserRepository repository1;
+	
+	@Autowired
+	private PhoneRepository repository2;
 	
 	//Plan
 	
@@ -57,8 +62,11 @@ public class PlanController {
 		return null;
 	}
 	
-	@DeleteMapping("/user/id/{id}/phone/{phone_id}"){
-		return repository1.delete(phone_id);
-	}
+	//Phone
+	
+/**	
+	@DeleteMapping("/phone/number/{number}"){
+		return repository2.deletebyName(number);
+	}*/
 	
 }

@@ -23,6 +23,10 @@ public class Users {
 	@Column(name = "user_id")
 	private Long id;
 
+	@OneToMany
+	@JoinColumn(name = "user_id")
+	private Set<Phone> phone = new HashSet<Phone>();
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<UserPlan> userPlans = new HashSet<UserPlan>();
 

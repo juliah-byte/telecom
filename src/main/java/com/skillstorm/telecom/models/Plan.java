@@ -1,5 +1,6 @@
 package com.skillstorm.telecom.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,18 +20,10 @@ public class Plan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "plan_id")
 	private Long id;
 
-<<<<<<< HEAD
-	@Column(name = "name")
-=======
-	@OneToMany
-	@JoinColumn(name = "phone_id")
-	private Set<Phone> phone = new HashSet<Phone>();
-
 	@Column(name = "plan_name")
->>>>>>> 8ba1a5f9bf5486d88f9040ba91de0f18f684c9e9
 	private String name;
 
 	@Column(name = "rate")
