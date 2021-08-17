@@ -32,7 +32,7 @@ public class Plan {
 	@JoinColumn(name = "phone_id")
 	private Set<Phone> phone = new HashSet<Phone>();
 
-	@Column(name = "name")
+	@Column(name = "plan_name")
 	private String name;
 
 	@Column(name = "rate")
@@ -41,13 +41,13 @@ public class Plan {
 	@Column(name = "minutes")
 	private String minutes;
 
-	@Column(name = "text")
+	@Column(name = "plan_text")
 	private String text;
 
 	@Column(name = "international")
 	private String international;
 
-	@Column(name = "data")
+	@Column(name = "plan_data")
 	private String data;
 
 	@OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
