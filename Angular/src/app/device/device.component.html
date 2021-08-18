@@ -14,7 +14,16 @@
           <th scope="col-lg-4">Plan</th>
         </tr>
       </thead>
-      <tbody id="tablebody">
+      <tbody class="tablebody">
+          <tr *ngFor="let d of deviceList">
+            <td scope="col-lg-4">{{d[0]}}</td>
+            <td scope="col-lg-4">{{d[1]}}</td>
+            <td scope="col-lg-4">{{d[2]}}</td>
+            <span>
+            <button class="btn submit-button" type="submit" value="Disconnect"></button>
+            <p></p>
+            </span>
+          </tr>
       </tbody>
     </table>
   </div>

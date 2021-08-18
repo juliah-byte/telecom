@@ -14,7 +14,7 @@ export class DeviceComponent implements OnInit {
   constructor(private service: DeviceService) {
    }
 
-  deviceList: Device[] = [];
+  deviceList: string[][] = [];
   
   ngOnInit(): void {
     this.service.findAll().subscribe((data) => {

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+;
 
 @Component({
   selector: 'app-plan-tab',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanTabComponent implements OnInit {
 
+  postId: any;
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

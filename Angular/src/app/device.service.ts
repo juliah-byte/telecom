@@ -9,11 +9,11 @@ import Device from './models/Device';
 })
 export class DeviceService {
 
-  url = 'http://localhost:62345/telecom/phones';
+  url = 'http://localhost:62345/phone/username/b/password/a';
   constructor(private httpClient: HttpClient) { }
 
-  findAll(): Observable<Device[]>{
-    return this.httpClient.get<Device[]>(this.url)
+  findAll(): Observable<string[][]>{
+    return this.httpClient.get<string[][]>(this.url)
   }
   
   
