@@ -1,33 +1,27 @@
 CREATE TABLE `phones` (
-  `phone_id` int NOT NULL DEFAULT '0',
+  `phone_id` int NOT NULL AUTO_INCREMENT,
   `pnumber` varchar(45) DEFAULT NULL,
   `device` varchar(45) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
   PRIMARY KEY (`phone_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `plan` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `plan_id` int NOT NULL AUTO_INCREMENT,
   `plan_data` varchar(255) DEFAULT NULL,
   `international` varchar(255) DEFAULT NULL,
   `minutes` varchar(255) DEFAULT NULL,
   `rate` int DEFAULT NULL,
   `plan_text` varchar(255) DEFAULT NULL,
   `plan_name` varchar(255) DEFAULT NULL,
-  `phone_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_phone_id_idx` (`phone_id`),
-  CONSTRAINT `fk_phone_id` FOREIGN KEY (`phone_id`) REFERENCES `phones` (`phone_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`plan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `user_plan` (
   `junc_id` int NOT NULL,
   `user_id` int DEFAULT NULL,
   `plan_id` int DEFAULT NULL,
-  PRIMARY KEY (`junc_id`),
-  KEY `FKfgwof219hqbrb6am5awwan8r2` (`plan_id`),
-  KEY `FKr1gojepx9qoalgmd17gurr1dl` (`user_id`),
-  CONSTRAINT `FKfgwof219hqbrb6am5awwan8r2` FOREIGN KEY (`plan_id`) REFERENCES `plan` (`id`),
-  CONSTRAINT `FKr1gojepx9qoalgmd17gurr1dl` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+  PRIMARY KEY (`junc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `users` (
@@ -40,4 +34,4 @@ CREATE TABLE `users` (
   `balance` int DEFAULT NULL,
   `numlines` int DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

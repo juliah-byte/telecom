@@ -26,10 +26,10 @@ public class UserPlan {
 	private Users user;
 
 	@Column(name = "user_id")
-	private int userId;
+	private Long userId;
 
 	@Column(name = "plan_id")
-	private int planId;
+	private Long planId;
 
 	@ManyToOne
 	@JoinColumn(name = "plan_id", referencedColumnName = "plan_id", insertable = false, updatable = false)
@@ -48,7 +48,7 @@ public class UserPlan {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserPlan(int userId, int planId) {
+	public UserPlan(Long userId, Long planId) {
 		super();
 		this.userId = userId;
 		this.planId = planId;
@@ -62,19 +62,19 @@ public class UserPlan {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public int getPlanId() {
+	public Long getPlanId() {
 		return planId;
 	}
 
-	public void setPlanId(int planId) {
+	public void setPlanId(Long planId) {
 		this.planId = planId;
 	}
 

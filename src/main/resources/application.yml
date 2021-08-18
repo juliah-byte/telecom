@@ -9,6 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mvc:
+    dispatch-options-request: true
 logging:
   level:
     org: 

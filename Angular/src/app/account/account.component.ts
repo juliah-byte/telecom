@@ -10,7 +10,7 @@ export class AccountComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log(sessionStorage.getItem('user'));
-    console.log(sessionStorage.getItem('password'));
+    console.log("Account Page User: " + sessionStorage.getItem('user'));
+    console.log("Account Page Password: " + sessionStorage.getItem('password'));
   }
 }
