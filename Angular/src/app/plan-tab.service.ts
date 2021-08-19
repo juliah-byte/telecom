@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class PlanTabService {
 
   }
 
-  save(id:BigInteger){
-    this.httpClient.post($"http://localhost:62345/plan/{id}", null)
-  }
+  // save(id:BigInteger){
+  //   this.httpClient.post($"http://localhost:62345/plan/{id}", null)
+  // }
 }

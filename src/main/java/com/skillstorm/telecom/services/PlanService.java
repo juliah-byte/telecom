@@ -20,7 +20,15 @@ public class PlanService {
 
 	public int addBasicPlan(Users u) {
 		System.out.println("addBasicPlan reached");
-		return repository.addBasicPlan(u.getUsername());
+		String planData = "35GB";
+		String phoneNumber = "";
+		String device = "";
+		Long rate = 35L;
+		Long numlines = 1L;
+		System.out.println(u.getUsername());
+		String username = u.getUsername();		
+		repository.updateUser(rate, numlines, username);
+		return 0;
 	}
 
 }

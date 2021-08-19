@@ -3,6 +3,7 @@ package com.skillstorm.telecom.data;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,9 @@ public interface UserRepository extends JpaRepository<Users, Long> {
 //	
 	@Modifying
 	@Transactional
-	@Query("update Users u set u.lines = u.lines + 1, u.balance = u.balance + 35 where u.username = ?1")
-	int addBasicPlan(String u);
+	@Query("update Users u set u.balance = u.balance + :rate, u.lines = u.lines + :numlines where u.username = :username")
+	void updateUser(@Param("numlines") Long lines, @Param("rate") Long balance, @Param("username") String username);
+	
+//	@Query(select u.balance from Users users where u)
 
 }

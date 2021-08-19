@@ -37,7 +37,7 @@ public class RegisterController {
 		{
 			if(u.getUsername().equals(user.getUsername()))
 			{
-//				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}
 		

@@ -70,10 +70,10 @@ public class PlanController {
 		
 	//User
 		
-	@GetMapping("/user/id/{id}")
-	public Optional<Users> getByUserId(@PathVariable Long id){
-		return repository1.findById(id);
-	}
+//	@GetMapping("/user/id/{id}")
+//	public Optional<Users> getByUserId(@PathVariable Long id){
+//		return repository1.findById(id);
+//	}
 	
 	@GetMapping("/user/id/{id}/balance")
 	public Long getBalance(@PathVariable Long id) {
@@ -105,7 +105,6 @@ public class PlanController {
 		System.out.println("Add Basic reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
-
 		return new ResponseEntity<>(service.addBasicPlan(u), HttpStatus.OK);
 	}
 
@@ -141,7 +140,7 @@ public class PlanController {
 //	@GetMapping("/phone/username/{username}/password/{password}")
 //	public ResponseEntity<List<Object>> getPhones(@PathVariable String username, @PathVariable String password) {
 //		System.out.println(username);
-//		//System.out.println(repository2.getPhones(username,password));
+//		System.out.println(repository2.getPhones(username,password));
 //		return new ResponseEntity<>(repository2.getPhonesByCredentials(username,password), HttpStatus.OK);
 //	}
 	
