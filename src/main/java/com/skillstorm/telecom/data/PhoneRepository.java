@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.skillstorm.telecom.models.Phone;
 
+@Repository
 public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	
@@ -21,6 +23,10 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 			+ "on user_plan.plan_id = plan.plan_id\r\n"
 			+ "where users.username = :username and users.user_password = :password", nativeQuery=true)
 	List<Object> getPhonesByCredentials(@Param("username") String username, @Param("password") String password);
+	
+	
+	Long deletePhoneByNumber(String number);
 
-	List<Phone> findByUsersUsernameAndPassword(String username, String password);
+	
+
 }

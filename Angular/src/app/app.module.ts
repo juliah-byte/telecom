@@ -1,5 +1,5 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-//import { NgModule } from '@angular/core';
+//import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +17,11 @@ import { BillTabComponent } from './bill-tab/bill-tab.component';
 import { DeviceComponent } from './device/device.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
+//import { BsModalRef } from 'ngx-bootstrap/modal';
+//import { BsModalService } from 'ngx-bootstrap/modal';
+//import { ViewChild, ElementRef } from '@angular/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,17 +32,26 @@ import { NavigationComponent } from './navigation/navigation.component';
     PlanTabComponent,
     BillTabComponent,
     DeviceComponent,
-    NavigationComponent
-
+    NavigationComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //BsModalService,
+    //AppComponent,
+    //BsModalRef,
+    //ViewChild,
+    //ElementRef,
+    
   ],
+ 
   providers: [],
+
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

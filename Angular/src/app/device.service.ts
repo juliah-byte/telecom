@@ -10,11 +10,21 @@ import Device from './models/Device';
 export class DeviceService {
 
   url = 'http://localhost:62345/phone/username/b/password/a';
+
+  url1 = 'http://localhost:62345/phone/number/';
+
   constructor(private httpClient: HttpClient) { }
 
   findAll(): Observable<string[][]>{
-    return this.httpClient.get<string[][]>(this.url)
+    return this.httpClient.get<string[][]>(this.url);
   }
+
+  deletePhoneLine(d:String): Observable<string[]> {
+    console.log(this.url1+d)
+    return this.httpClient.delete<string[]>(this.url1+d);
+
+  }
+
   
   
   

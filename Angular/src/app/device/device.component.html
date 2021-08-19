@@ -6,7 +6,7 @@
 <body>
   <h1>Phones</h1>
   <div style="height: 200px; overflow-y: scroll" class="center-screen">
-    <table class="table table-hover center" style="width: 50%">
+    <table class="table center" style="width: 50%">
       <thead>
         <tr>
           <th scope="col-lg-4">Phone Number</th>
@@ -17,14 +17,12 @@
       <tbody class="tablebody">
           <tr *ngFor="let d of deviceList">
             <td scope="col-lg-4">{{d[0]}}</td>
-            <td scope="col-lg-4">{{d[1]}}</td>
+            <td scope="col-lg-4">{{d[1]}} </td>
             <td scope="col-lg-4">{{d[2]}}</td>
-            <span>
-            <button class="btn submit-button" type="submit" value="Disconnect"></button>
-            <p></p>
-            </span>
+            <button (click)="deletePhoneLine(d[0])" class="btn submit-button" type="submit" name= "Disconnect">Disconnect</button>
           </tr>
       </tbody>
     </table>
   </div>
 </body>
+ 

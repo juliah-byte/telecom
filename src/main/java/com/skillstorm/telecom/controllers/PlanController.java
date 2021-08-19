@@ -3,10 +3,13 @@ package com.skillstorm.telecom.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -27,7 +30,7 @@ import com.skillstorm.telecom.services.PlanService;
 import com.skillstorm.telecom.services.RegisterService;
 
 @RestController
-@RequestMapping("plans")
+@Transactional
 @CrossOrigin(origins = "http://localhost:4200")
 public class PlanController {
 
@@ -138,13 +141,21 @@ public class PlanController {
 	
 	//Phone
 	
-//	@GetMapping("/phone/username/{username}/password/{password}")
-//	public ResponseEntity<List<Object>> getPhones(@PathVariable String username, @PathVariable String password) {
-//		System.out.println(username);
-//		//System.out.println(repository2.getPhones(username,password));
-//		return new ResponseEntity<>(repository2.getPhonesByCredentials(username,password), HttpStatus.OK);
-//	}
+	@GetMapping("/phone/username/{username}/password/{password}")
+	public ResponseEntity<Object> getPhones(@PathVariable String username, @PathVariable String password) {
+		System.out.println(username);
+		//System.out.println(repository2.getPhones(username,password));
+		return new ResponseEntity<>(repository2.getPhonesByCredentials(username,password), HttpStatus.OK);
+		}
+		
+	@DeleteMapping("/phone/number/{number}")
+	public ResponseEntity<Long> deletePhoneByPhoneNumber(@PathVariable String number) {
+		System.out.println("Delete");
+		return new ResponseEntity<Long>(repository2.deletePhoneByNumber(number),HttpStatus.NO_CONTENT);
+	}
 	
+}
+
 	
 /**	
 	@DeleteMapping("/phone/number/{number}"){
@@ -157,4 +168,5 @@ public class PlanController {
 		return repository3.saveById(user_id, plan_id);
 	}
 */
-}
+
+
