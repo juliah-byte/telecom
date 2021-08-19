@@ -13,6 +13,7 @@ import com.skillstorm.telecom.models.Phone;
 public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	
+
 	@Query(value = "select pnumber, device, plan.plan_name \r\n"
 			+ "From phones \r\n"
 			+ "left join users \r\n"

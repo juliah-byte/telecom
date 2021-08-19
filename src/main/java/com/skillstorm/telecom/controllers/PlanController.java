@@ -72,11 +72,7 @@ public class PlanController {
 	}	
 		
 	//User
-		
-	@GetMapping("/user/id/{id}")
-	public Optional<Users> getByUserId(@PathVariable Long id){
-		return repository1.findById(id);
-	}
+
 	
 	@GetMapping("/user/id/{id}/balance")
 	public Long getBalance(@PathVariable Long id) {
@@ -108,39 +104,16 @@ public class PlanController {
 		System.out.println("Add Basic reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
-
 		return new ResponseEntity<>(service.addBasicPlan(u), HttpStatus.OK);
 	}
 
 
-//	@GetMapping("/user/id/{id}")
-//	public Optional<Users> getByUserId(@PathVariable Long id){
-//		return repository1.findById(id);
-//	}
-//	
-//	@GetMapping("/user/id/{id}/balance")
-//	public Long getBalance(@PathVariable Long id) {
-////		return repository1.findByBalance(id);
-//		return null;
-//	}
-//	
-//	@GetMapping("/user/id/{id}/lines")
-//	public Long getLine(@PathVariable Long id) {
-////		return repository1.findByLine(id);
-//		return null;
-//	}
-
-	// Phone
-
-	/**
-	 * @DeleteMapping("/phone/number/{number}"){ return
-	 * repository2.deletebyName(number); }
-	 */
 
 
 	
 	//Phone
 	
+
 	@GetMapping("/phone/username/{username}/password/{password}")
 	public ResponseEntity<Object> getPhones(@PathVariable String username, @PathVariable String password) {
 		System.out.println(username);
@@ -153,20 +126,7 @@ public class PlanController {
 		System.out.println("Delete");
 		return new ResponseEntity<Long>(repository2.deletePhoneByNumber(number),HttpStatus.NO_CONTENT);
 	}
-	
+
+
 }
-
-	
-/**	
-	@DeleteMapping("/phone/number/{number}"){
-		return repository2.deletebyName(number);
-	}
-	
-	
-	@PostMapping("/userplan/{user_id/plan_id")
-	public UserPlan savebyId(Long user_id, Long plan_id) {
-		return repository3.saveById(user_id, plan_id);
-	}
-*/
-
 

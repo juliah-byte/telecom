@@ -32,6 +32,7 @@ export class PlanTabComponent implements OnInit {
     console.log("selectBasic called");
 
     this.service.addBasicPlan(this.user).subscribe((data) => {
+      window.alert("Basic Plan Added!")
       
     });
     console.log(this.user);
