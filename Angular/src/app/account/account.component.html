@@ -21,19 +21,19 @@
                               <tr>
                                   <td class="content-block">
                                       <table class="invoice">
-                                          <tbody><tr>
-                                              <td>Anna Smith<br></td>
-                                          </tr>
+                                          <tbody><tr >
+                                              <td>Welcome {{ name}}! <br></td>
+                                          </tr> 
                                           <tr>
                                               <td>
                                                   <table class="invoice-items" cellpadding="0" cellspacing="0">
                                                       <tbody>
                                                         <tr *ngFor ="let a of accountList">
                                                           <td>{{a[0]}}</td>
-                                                          <td class="alignright">{{a[1]}}</td>
+                                                          <td class="alignright" width> ${{a[1]}}</td>
                                                       </tr>
                                                       <tr class="total">
-                                                          <td class="alignright" width="80%">Total:{{bill}}</td>
+                                                          <td class="alignright" width="140%"> Total ${{bill}}</td>
                                                           <td class="alignright"></td>
                                                       </tr>
                                                   </tbody></table>
@@ -44,7 +44,7 @@
                               </tr>
                               <tr>
                                   <td class="content-block">
-                                      Company Inc. 123 Van Ness, San Francisco 94102
+                                      Telecom Inc. 123 Van Ness, San Francisco 94102
                                   </td>
                               </tr>
                           </tbody></table>
@@ -64,41 +64,3 @@
 </tbody></table>
 
 
-<table style="margin-left: auto; margin-right: auto">
-  <tr>
-    <td class="content-block">
-      <h2>Billing Statement</h2>
-    </td>
-  </tr>
-  <tr>
-    <td>Welcome to your account, {{ name }}! <br /></td>
-  </tr>
-  <!-- <tr>
-    <td>Premium</td>
-    <td class="alignright"></td>
-  </tr>
-  <tr>
-    <td>Deluxe</td>
-    <td class="alignright"></td>
-  </tr>
-  <tr>
-    <td>Basic</td>
-    <td class="alignright"></td>
-  </tr> -->
-  <tr class="total">
-    <td width="80%">Your currently monthly balance is: ${{ bill }}</td>
-  </tr>
-  <!-- <tr>
-    <td class="content-block">
-      Company Inc. 123 Van Ness, San Francisco 94102
-    </td>
-  </tr>
-
-  <div class="footer">
-    <tr>
-      <td class="aligncenter content-block">
-        Questions? Email <a href="mailto:">support@telecom.inc</a>
-      </td>
-    </tr>
-  </div> -->
-</table>

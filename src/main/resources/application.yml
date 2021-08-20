@@ -10,13 +10,9 @@ spring:
     hibernate:
       ddl-auto: update
   mvc:
-    dispatch-options-request: true
+    dispatch-options-request: true  activemq:    broker-url: 
 logging:
   level:
     org: 
     springframework:
       web: debug
-      
-        
-      
-    

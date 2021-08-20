@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.telecom.data.PhoneRepository;
@@ -29,10 +33,11 @@ import com.skillstorm.telecom.models.Users;
 import com.skillstorm.telecom.services.PlanService;
 import com.skillstorm.telecom.services.RegisterService;
 
+import jdk.internal.org.jline.utils.Log;
+
 @RestController
 @Transactional
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("plans")
 public class PlanController {
 
 	@Autowired
@@ -44,98 +49,81 @@ public class PlanController {
 	@Autowired
 	private PhoneRepository repository2;
 
-
 	@Autowired
 	private PlanService service;
 
 	public PlanController() {
-		
+
 	}
 
-	
-	//Plan
-	
+	//private Logger logger = Logger.getLogger(this.getClass());
+
+	// Plan
+
 	@GetMapping("plan/username/{username}/password/{password}")
-	public ResponseEntity<Object> getPlanByCredentials(@PathVariable String username, @PathVariable String password){
+	public ResponseEntity<Object> getPlanByCredentials(@PathVariable String username, @PathVariable String password) {
 		return new ResponseEntity<>(repository.findPlanByUsernameAndPassword(username, password), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/plans")
-	public List<Plan> findAll(){
+	public List<Plan> findAll() {
 		return repository.findAll();
 	}
-	
-	@GetMapping("/plan/id/{id}")
-	public Optional<Plan> getById( @PathVariable Long id) {
-		return repository.findById(id);
-	}
-	
-	@GetMapping("plan/name/{name}")
-	public Plan getByName(@PathVariable String name) {
-		return repository.findByName(name);
-	}	
-		
-	//User
 
-	
-	@GetMapping("/user/id/{id}/balance")
-	public Long getBalance(@PathVariable Long id) {
-		return repository1.findByBalance(id);
-		
+	@GetMapping("/plan/id/{id}")
+	public Optional<Plan> getById(@PathVariable Long id) {
+		return repository.findById(id);
 	}
 
 
 	// User
+	@GetMapping("/user/username/{username}")
+	public Users getUserName(@PathVariable String username) {
+		return repository1.getNameByUsername(username);
+	}
 
-	@PostMapping
-	@RequestMapping("addBasic")
+	@RequestMapping(value = "/plans/addBasic", method = RequestMethod.POST)
+	@ResponseBody
 	public ResponseEntity<Integer> addBasic(@RequestBody Users user) {
-
-		System.out.println("Add Basic reached");
+		//Log.debug("Add Basic Reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
 		return new ResponseEntity<>(service.addBasicPlan(u), HttpStatus.OK);
 	}
-	
 
-	@PostMapping
-	@RequestMapping("addPremium")
+	@RequestMapping(value = "/plans/addPremium", method = RequestMethod.POST)
+	@ResponseBody
 	public ResponseEntity<Integer> addPremium(@RequestBody Users user) {
-		System.out.println("Add Premium reached");
+		//Log.debug("Add Premium Reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
 		return new ResponseEntity<>(service.addPremiumPlan(u), HttpStatus.OK);
 	}
-	@PostMapping
-	@RequestMapping("addDeluxe")
+
+	@RequestMapping(value = "/plans/addDeluxe", method = RequestMethod.POST)
+	@ResponseBody
 	public ResponseEntity<Integer> addDeluxe(@RequestBody Users user) {
+		//Log.debug("Add Deluxe Reached");
 		System.out.println("Add Deluxe Reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
 		return new ResponseEntity<>(service.addDeluxePlan(u), HttpStatus.OK);
-	 
+
 	}
 
-
-
-
-	
-	//Phone
-	
+	// Phone
 
 	@GetMapping("/phone/username/{username}/password/{password}")
 	public ResponseEntity<Object> getPhones(@PathVariable String username, @PathVariable String password) {
-		System.out.println(username);
-		//System.out.println(repository2.getPhones(username,password));
-		return new ResponseEntity<>(repository2.getPhonesByCredentials(username,password), HttpStatus.OK);
-		}
-		
-	@DeleteMapping("/phone/number/{number}")
-	public ResponseEntity<Long> deletePhoneByPhoneNumber(@PathVariable String number) {
-		System.out.println("Delete");
-		return new ResponseEntity<Long>(repository2.deletePhoneByNumber(number),HttpStatus.NO_CONTENT);
+		//Log.debug("getPhones method initialized");
+		// System.out.println(repository2.getPhones(username,password));
+		return new ResponseEntity<>(repository2.getPhonesByCredentials(username, password), HttpStatus.OK);
 	}
 
+	@DeleteMapping("/phone/number/{number}")
+	public ResponseEntity<Long> deletePhoneByPhoneNumber(@PathVariable String number) {
+		//Log.debug("deleteByPhone Number intialized");
+		return new ResponseEntity<Long>(repository2.deletePhoneByNumber(number), HttpStatus.NO_CONTENT);
+	}
 
 }
-

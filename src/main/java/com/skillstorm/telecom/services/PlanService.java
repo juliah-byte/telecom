@@ -71,7 +71,7 @@ public class PlanService {
 		Long id = uRepository.getIdByUser(u.getUsername());
 		System.out.println(id);
 		uRepository.updateUser(numlines, rate, username);
-		pRepository.addDevice(phoneNumber, device, id);
+		pRepository.addDevice(phoneNumber, device, 12);
 		return 0;
 	}
 	
@@ -150,8 +150,8 @@ public class PlanService {
 		Long id = uRepository.getIdByUser(u.getUsername());
 		System.out.println(id);
 		uRepository.updateUser(numlines, rate, username);
-		pRepository.addDevice(phoneNumber1, device1, id);
-		pRepository.addDevice(phoneNumber2, device2, id);		
+		pRepository.addDevice(phoneNumber1, device1, 13);
+		pRepository.addDevice(phoneNumber2, device2, 13);		
 		return 0;
 	}
 	
@@ -230,8 +230,8 @@ public class PlanService {
 		Long id = uRepository.getIdByUser(u.getUsername());
 		System.out.println(id);
 		uRepository.updateUser(numlines, rate, username);
-		pRepository.addDevice(phoneNumber1, device1, id);
-		pRepository.addDevice(phoneNumber2, device2, id);
+		pRepository.addDevice(phoneNumber1, device1, 14);
+		pRepository.addDevice(phoneNumber2, device2, 14);
 		return 0;
 	}
 

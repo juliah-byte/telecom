@@ -14,6 +14,7 @@ export class AccountComponent implements OnInit {
   user: User = new User('', '', '', '', '', 0);
 
   accountList : string[][] = [];
+  userList : string[] = [];
 
   name = sessionStorage.getItem('user');
   
@@ -24,8 +25,13 @@ export class AccountComponent implements OnInit {
     // console.log("Account Page Password: " + sessionStorage.getItem('password')); 
     this.service.getBalance().subscribe((balance) => {
       this.bill = balance;
-      // console.log(this.name + " " + this.bill);
+      // console.log(this.name + " " + this.bill)
       
+    });
+
+    this.service.getName().subscribe((data) => {
+      this.userList = data;
+      console.log(this.userList)
     });
 
     this.service.findDetails().subscribe((data)=>{

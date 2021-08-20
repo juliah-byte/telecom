@@ -26,11 +26,15 @@ public interface UserRepository extends JpaRepository<Users, Long> {
 	@Query("update Users u set u.lines = u.lines + :numlines, u.balance = u.balance + :rate where u.username = :username")
 	void updateUser(@Param("numlines") Long lines, @Param("rate") Long balance, @Param("username") String username);
 	
-	@Query("select u.balance from Users u where u.username = ?1")
+	@Query("select u.balance from Users u where u.username = :username")
 	Integer getBalanceByUser(@Param("username") String username);
 	
-	@Query("select u.id from Users u where u.username = ?1")
+	@Query("select u.id from Users u where u.username = :username")
 	Long getIdByUser(@Param("username") String username);
 	
-
+	@Query("select u from Users u where u.username = :username")
+	Users getNameByUsername(@Param("username") String username);
+	
+	/**@Query("select u.first_name from Users u where u.username = :username and u.user_password :password")
+	String getNameByUsernameAndPassword(@Param("username") String username, @Param("user_password") String password);*/
 }
