@@ -4,16 +4,17 @@
 
 body { 
   font-family: 'Open Sans', sans-serif;
-  color: #f0f4f7;
+ 
 }
 
 /* STRUCTURE */
 
 .wrapper {
-	padding: 5px;
+	padding: 0;
 	max-width: 960px;
 	width: 95%;
-	margin: 20px auto;
+	margin: 0px auto;
+	background: #fff;
 }
 header {
 	padding: 0 15px;
@@ -31,26 +32,23 @@ header {
 	border: 1px solid gray;
 	margin: 2px;
 	padding: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
 	
 }
 
 footer {
-	padding: 0 15px;
+	padding: 0 0px;
 }
 
 .submit-button{
-    margin-left: 390px;
+    margin-left: 700px;
 }
 
 
 @media screen and (max-width: 680px) {
 	.columns .column {
 		flex-basis: 100%;
-		margin: 0 0 5px 0;
+		margin: 0 0 0 0;
+		
 	}
-
-
-
-
 }

@@ -14,14 +14,13 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	
 
-	@Query(value = "select pnumber, device, plan.plan_name \r\n"
-			+ "From phones \r\n"
-			+ "left join users \r\n"
-			+ "On phones.user_id = users.user_id \r\n"
-			+ "inner join user_plan\r\n"
-			+ "on users.user_id = user_plan.user_id\r\n"
-			+ "inner join plan\r\n"
-			+ "on user_plan.plan_id = plan.plan_id\r\n"
+	@Query(value ="select pnumber, device, plan.plan_name "
+			+ "from phones inner join plan "
+			+ "on phones.plan_id = plan.plan_id "
+			+ " inner join user_plan "
+			+ "on plan.plan_id = user_plan.plan_id "
+			+ " inner join users "
+			+ "on user_plan.user_id = users.user_id "
 			+ "where users.username = :username and users.user_password = :password", nativeQuery=true)
 	List<Object> getPhonesByCredentials(@Param("username") String username, @Param("password") String password);
 	

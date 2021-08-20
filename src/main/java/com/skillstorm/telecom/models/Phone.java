@@ -1,13 +1,11 @@
 package com.skillstorm.telecom.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,16 +17,16 @@ public class Phone {
 	@Column(name = "phone_id")
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id", insertable = false, updatable = false)
-	private Users user;
-
 	@Column(name = "pnumber")
 	private String number;
 
 	@Column(name = "device")
 	private String device;
-
+	
+	@Column(name = "plan_id")
+	private String plan_id;
+	
+	
 	public Phone() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -64,14 +62,6 @@ public class Phone {
 		this.device = device;
 	}
 
-	
-	public Users getUser() {
-		return user;
-	}
-
-	public void setUser(Users user) {
-		this.user = user;
-	}
 
 	@Override
 	public String toString() {

@@ -52,9 +52,12 @@ public class PlanController {
 	}
 
 	
-	
-	
 	//Plan
+	
+	@GetMapping("plan/username/{username}/password/{password}")
+	public ResponseEntity<Object> getPlanByCredentials(@PathVariable String username, @PathVariable String password){
+		return new ResponseEntity<>(repository.findPlanByUsernameAndPassword(username, password), HttpStatus.OK);
+	}
 	
 	@GetMapping("/plans")
 	public List<Plan> findAll(){
@@ -76,25 +79,10 @@ public class PlanController {
 	
 	@GetMapping("/user/id/{id}/balance")
 	public Long getBalance(@PathVariable Long id) {
-//		return repository1.findByBalance(id);
-		return null;
+		return repository1.findByBalance(id);
+		
 	}
 
-//	//Plan	
-//	@GetMapping("plans/findAll")
-//	public List<Plan> findAll(){
-//		return repository.findAll();
-//	}
-//	
-//	@GetMapping("/plans/id/{id}")
-//	public Optional<Plan> getById( @PathVariable Long id) {
-//		return repository.findById(id);
-//	}
-//	
-//	@GetMapping("plans/name/{name}")
-//	public Plan getByName(@PathVariable String name) {
-//		return repository.findByName(name);
-//	}	
 
 	// User
 
@@ -106,8 +94,9 @@ public class PlanController {
 		u.setUsername(user.getUsername());
 		return new ResponseEntity<>(service.addBasicPlan(u), HttpStatus.OK);
 	}
-
-
+	
+	/**@GetMappping
+	public String getUsersNameByCredentials(@PathVariable username, @PathVariable)*/
 
 
 	

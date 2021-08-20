@@ -4,22 +4,22 @@
 }
 
 nav ul {
-    background-color: r#f0f4f7;;
+    background-color: r#b0d9f8;
 }
 
 #navigation {
-    background-color:#f78f30!important;
+    background-color:#b0d9f8!important;
 }
 
 nav ul {
     /* background-color:rgb(201, 132, 54) !important; */
-    background-color:#f78f30 !important;
+    background-color:#b0d9f8 !important;
     justify-content: space-around !important;
     width: 100%;
 }
 
 #navigation {
-    background-color: #f78f30 !important;
+    background-color: #b0d9f8 !important;
     /* background-color:rgb(201, 132, 54) !important; */
     border: 200px;
     border-bottom: 2px solid rgb(90, 88, 88);

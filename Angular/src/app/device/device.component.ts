@@ -15,7 +15,7 @@ export class DeviceComponent implements OnInit {
    }
 
   deviceList: string[][] = [];
-  phoneNumber!: string;
+  
   
   ngOnInit(): void {
     this.service.findAll().subscribe((data) => {
