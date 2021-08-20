@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private service: LoginService, private router: Router) {}
 
   validate(): void {
-    console.log(this.user.username + this.user.password);
+    // console.log(this.user.username + this.user.password);
     var uName = this.user.username;
     var pass = this.user.password;
     this.service.findAll().subscribe((allUsers) => {

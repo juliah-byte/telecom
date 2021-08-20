@@ -15,7 +15,7 @@ export class PlanService {
   constructor(private httpClient: HttpClient) { }
 
   addBasicPlan(user: User) : Observable<User> {
-    console.log("Plan service reached");
+    // console.log("Plan service reached");
     return this.httpClient.post<User>(this.basicUrl, user);
   }
 
