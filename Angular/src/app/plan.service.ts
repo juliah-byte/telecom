@@ -8,12 +8,22 @@ import { Observable } from 'rxjs';
 })
 export class PlanService {
 
-  url = 'http://localhost:62345/plans';
+  basicUrl = 'http://localhost:62345/plans/addBasic';
+  premiumUrl = 'http://localhost:62345/plans/addPremium';
+  deluxeUrl = 'http://localhost:62345/plans/addDeluxe';
 
   constructor(private httpClient: HttpClient) { }
 
   addBasicPlan(user: User) : Observable<User> {
     console.log("Plan service reached");
-    return this.httpClient.post<User>(this.url, user);
+    return this.httpClient.post<User>(this.basicUrl, user);
+  }
+
+  addPremiumPlan(user: User) : Observable<User> {
+    return this.httpClient.post<User>(this.premiumUrl, user);
+  }
+
+  addDeluxePlan(user: User) : Observable<User> {
+    return this.httpClient.post<User>(this.deluxeUrl, user);
   }
 }

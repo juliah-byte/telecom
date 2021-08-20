@@ -17,9 +17,7 @@ export class AccountService {
   constructor(private httpClient: HttpClient) { }
 
   getBalance() : Observable<any> {
-
-    return this.httpClient.get<any>(this.url);
-
+    return this.httpClient.post<any>(this.url, sessionStorage.getItem('user'));
   }
 
   findDetails(): Observable<string[][]>{

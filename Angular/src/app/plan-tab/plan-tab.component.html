@@ -47,6 +47,9 @@
           <span> 1 Line</span>
     </p>
     <!--Select Basic Plan-->
+    <div text-align="center">
+      <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" (click) = "selectBasic();" />
+    </div>
     
   </div>
 	
@@ -88,6 +91,10 @@
               </svg>
               <span> 2 Lines</span>
         </p>  
+        <!-- Select Premium Plan -->
+        <div text-align="center">
+          <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" (click) = "selectPremium();" />
+        </div>
 	</div>
   
   <div class="column">
@@ -135,13 +142,17 @@
             </svg>
             <span> 2 Lines</span>
         </p>
+        <!-- Select Deluxe Plan -->
+        <div text-align="center">
+          <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" (click) = "selectDeluxe();" />
+        </div>
 	</div>
 </section>	
 </div>
 <footer>
-  <div>
+  <!-- <div>
     <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" />
-  </div>
+  </div> -->
  
 <!--
    <button (click)="openModalWithComponent()">open</button>

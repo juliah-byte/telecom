@@ -1,9 +1,12 @@
 package com.skillstorm.telecom.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,11 +25,11 @@ public class AccountController {
 		
 	}
 	
-	@GetMapping
-	public ResponseEntity<Users> getBalance() {
-		System.out.println("Get Balance Controller reached");
+	@PostMapping
+	public ResponseEntity<Integer> getBalance(@RequestBody String username) {
+		System.out.println("Get Balance Controller reached, balance is " + service.getBillByUser(username));		
 		
-		return null;
+		return new ResponseEntity<Integer>(service.getBillByUser(username), HttpStatus.OK);
 	}
 
 }

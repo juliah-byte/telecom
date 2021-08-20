@@ -1,5 +1,7 @@
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
 
 <app-navigation></app-navigation>
 <table class="body-wrap">
@@ -61,3 +63,42 @@
   </tr>
 </tbody></table>
 
+
+<table style="margin-left: auto; margin-right: auto">
+  <tr>
+    <td class="content-block">
+      <h2>Billing Statement</h2>
+    </td>
+  </tr>
+  <tr>
+    <td>Welcome to your account, {{ name }}! <br /></td>
+  </tr>
+  <!-- <tr>
+    <td>Premium</td>
+    <td class="alignright"></td>
+  </tr>
+  <tr>
+    <td>Deluxe</td>
+    <td class="alignright"></td>
+  </tr>
+  <tr>
+    <td>Basic</td>
+    <td class="alignright"></td>
+  </tr> -->
+  <tr class="total">
+    <td width="80%">Your currently monthly balance is: ${{ bill }}</td>
+  </tr>
+  <!-- <tr>
+    <td class="content-block">
+      Company Inc. 123 Van Ness, San Francisco 94102
+    </td>
+  </tr>
+
+  <div class="footer">
+    <tr>
+      <td class="aligncenter content-block">
+        Questions? Email <a href="mailto:">support@telecom.inc</a>
+      </td>
+    </tr>
+  </div> -->
+</table>

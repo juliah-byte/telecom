@@ -23,9 +23,14 @@ public interface UserRepository extends JpaRepository<Users, Long> {
 //	
 	@Modifying
 	@Transactional
-	@Query("update Users u set u.balance = u.balance + :rate, u.lines = u.lines + :numlines where u.username = :username")
+	@Query("update Users u set u.lines = u.lines + :numlines, u.balance = u.balance + :rate where u.username = :username")
 	void updateUser(@Param("numlines") Long lines, @Param("rate") Long balance, @Param("username") String username);
 	
-//	@Query(select u.balance from Users users where u)
+	@Query("select u.balance from Users u where u.username = ?1")
+	Integer getBalanceByUser(@Param("username") String username);
+	
+	@Query("select u.id from Users u where u.username = ?1")
+	Long getIdByUser(@Param("username") String username);
+	
 
 }
