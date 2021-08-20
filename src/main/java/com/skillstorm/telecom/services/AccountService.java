@@ -12,8 +12,9 @@ public class AccountService {
 	@Autowired
 	private UserRepository repository;
 	
-	public Users getByUser(Users u) {
-		return null;
+	public Integer getBillByUser(String username) {
+		System.out.println("Account Service Balance" + repository.getBalanceByUser(username));
+		return repository.getBalanceByUser(username);
 	}
 
 }

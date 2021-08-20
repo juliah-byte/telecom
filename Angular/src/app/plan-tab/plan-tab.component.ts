@@ -24,19 +24,31 @@ export class PlanTabComponent implements OnInit {
     // console.log("Plan Session Password: " + sessionStorage.getItem('password'));
     this.user.username = sessionStorage.getItem('user');
     this.user.password = sessionStorage.getItem('password');
-    console.log("Plan Page User: " + this.user.username);
-    console.log("Plan Page Password: " + this.user.password);
+    // console.log("Plan Page User: " + this.user.username);
+    // console.log("Plan Page Password: " + this.user.password);
   }
 
   selectBasic() : void {
-    console.log("selectBasic called");
+    // console.log("selectBasic called");
 
     this.service.addBasicPlan(this.user).subscribe((data) => {
-      window.alert("Basic Plan Added!")
+      window.alert("Basic Plan Added!");
       
     });
     console.log(this.user);
+  }
 
+  selectPremium() : void {
+    this.service.addPremiumPlan(this.user).subscribe((data) => {
+      window.alert("Premium Plan Added!");
+      
+    });
+  }
+
+  selectDeluxe() : void {
+    this.service.addDeluxePlan(this.user).subscribe((data) => {
+      window.alert("Deluxe Plan Added!");
+    });
   }
 
  /**@ViewChild('template')

@@ -3,9 +3,11 @@ package com.skillstorm.telecom.data;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.telecom.models.Phone;
 
@@ -27,6 +29,14 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	
 	Long deletePhoneByNumber(String number);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "insert into phones(pnumber, device, user_id) values (?1, ?2, ?3)", nativeQuery = true)
+	void addDevice(String number, String device, Long id);
+	
+	@Query("select p.number from Phone p")
+	String[] getPhoneNumbers();
 
 	
 

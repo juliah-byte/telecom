@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         // console.log(this.users[i].username + " " + this.users[i].password);
         // console.log(this.user.username + " " + this.user.password);
         if (this.users[i].username == uName && this.users[i].password == pass) {
-          console.log('Login Successful');
+          // console.log('Login Successful');
           sessionStorage.setItem('user', uName);
           sessionStorage.setItem('password', pass);
           this.router.navigate(['/Account']);
@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
       }
     });
 
-    console.log('End of loop');
+    // console.log('End of loop');
   }
 
   ngOnInit(): void {
-    console.log(sessionStorage.getItem('user'));
-    console.log(sessionStorage.getItem('password'));
+    // console.log(sessionStorage.getItem('user'));
+    // console.log(sessionStorage.getItem('password'));
   }
 }

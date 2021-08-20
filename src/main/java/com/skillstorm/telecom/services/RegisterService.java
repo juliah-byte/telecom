@@ -21,8 +21,14 @@ public class RegisterService {
 	public Users save(Users user) {
 		user.setLines(0L);
 		user.setBalance(0L);
-		System.out.println(user.toString());
+		System.out.println(user.toString());		
+		
 		return repository.save(user);
+	}
+	
+	public String generateNumber() {
+		
+		return null;
 	}
 	
 	public List<Users> findAll()

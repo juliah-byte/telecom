@@ -32,6 +32,7 @@ import com.skillstorm.telecom.services.RegisterService;
 @RestController
 @Transactional
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("plans")
 public class PlanController {
 
 	@Autowired
@@ -50,9 +51,6 @@ public class PlanController {
 	public PlanController() {
 		
 	}
-
-	
-	
 	
 	//Plan
 	
@@ -99,12 +97,31 @@ public class PlanController {
 	// User
 
 	@PostMapping
+	@RequestMapping("addBasic")
 	public ResponseEntity<Integer> addBasic(@RequestBody Users user) {
 
 		System.out.println("Add Basic reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
 		return new ResponseEntity<>(service.addBasicPlan(u), HttpStatus.OK);
+	}
+	
+	@PostMapping
+	@RequestMapping("addPremium")
+	public ResponseEntity<Integer> addPremium(@RequestBody Users user) {
+		System.out.println("Add Premium reached");
+		Users u = new Users();
+		u.setUsername(user.getUsername());
+		return new ResponseEntity<>(service.addPremiumPlan(u), HttpStatus.OK);
+	}
+	@PostMapping
+	@RequestMapping("addDeluxe")
+	public ResponseEntity<Integer> addDeluxe(@RequestBody Users user) {
+		System.out.println("Add Deluxe Reached");
+		Users u = new Users();
+		u.setUsername(user.getUsername());
+		return new ResponseEntity<>(service.addDeluxePlan(u), HttpStatus.OK);
+	 
 	}
 
 
