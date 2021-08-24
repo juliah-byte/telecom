@@ -14,7 +14,7 @@ public class Phone {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "phone_id")
+	@Column(name = "phoneid")
 	private Long id;
 
 	@Column(name = "pnumber")
@@ -23,8 +23,8 @@ public class Phone {
 	@Column(name = "device")
 	private String device;
 	
-	@Column(name = "plan_id")
-	private String plan_id;
+	@Column(name = "planid")
+	private String planId;
 	
 	
 	public Phone() {

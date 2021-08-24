@@ -30,6 +30,7 @@ import com.skillstorm.telecom.models.Phone;
 import com.skillstorm.telecom.models.Plan;
 //import com.skillstorm.telecom.models.UserPlan;
 import com.skillstorm.telecom.models.Users;
+import com.skillstorm.telecom.services.AccountService;
 import com.skillstorm.telecom.services.PlanService;
 import com.skillstorm.telecom.services.RegisterService;
 
@@ -50,7 +51,12 @@ public class PlanController {
 	private PhoneRepository repository2;
 
 	@Autowired
-	private PlanService service;
+	private PlanService pService;
+	
+	@Autowired
+	private AccountService aService;
+	
+	
 
 	public PlanController() {
 
@@ -78,8 +84,19 @@ public class PlanController {
 
 	// User
 	@GetMapping("/user/username/{username}")
-	public Users getUserName(@PathVariable String username) {
-		return repository1.getNameByUsername(username);
+	public ResponseEntity<Long> setIdbyUsername(@PathVariable String username) {
+		return new ResponseEntity<Long>(aService.getIdByUser(username), HttpStatus.OK);
+	}
+	
+	
+	
+	@GetMapping("/user/username/{username}/password/{password}")
+	public ResponseEntity<Users> getIdByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+		//System.out.println(s);
+		//Long UsersId = s.getId();
+		////return new ResponseEntity<>(UsersId, HttpStatus.OK);
+		
+		return new ResponseEntity<Users>(repository1.getUsersByUsernameAndPassword(username, password), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/plans/addBasic", method = RequestMethod.POST)
@@ -88,7 +105,7 @@ public class PlanController {
 		//Log.debug("Add Basic Reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
-		return new ResponseEntity<>(service.addBasicPlan(u), HttpStatus.OK);
+		return new ResponseEntity<>(pService.addBasicPlan(u), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/plans/addPremium", method = RequestMethod.POST)
@@ -97,7 +114,7 @@ public class PlanController {
 		//Log.debug("Add Premium Reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
-		return new ResponseEntity<>(service.addPremiumPlan(u), HttpStatus.OK);
+		return new ResponseEntity<>(pService.addPremiumPlan(u), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/plans/addDeluxe", method = RequestMethod.POST)
@@ -107,7 +124,7 @@ public class PlanController {
 		System.out.println("Add Deluxe Reached");
 		Users u = new Users();
 		u.setUsername(user.getUsername());
-		return new ResponseEntity<>(service.addDeluxePlan(u), HttpStatus.OK);
+		return new ResponseEntity<>(pService.addDeluxePlan(u), HttpStatus.OK);
 
 	}
 

@@ -10,11 +10,12 @@ body {
 /* STRUCTURE */
 
 .wrapper {
-	padding: 0;
+	padding: 5px;
 	max-width: 960px;
 	width: 95%;
 	margin: 0px auto;
 	background: #fff;
+	
 }
 header {
 	padding: 0 15px;
@@ -51,4 +52,28 @@ footer {
 		margin: 0 0 0 0;
 		
 	}
+
+	.col-25, .col-75, input[type=submit]{
+		width: 100%;
+		margin-top: 0;
+		flex-basis: 100%;
+	}
 }
+
+label{
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+
+.center {
+	flex: 1;
+	margin: auto;
+	width: 60%;
+	border: 1px solid black;
+	padding: 30px;
+	text-align: center;
+	background-color: #fff;
+	box-sizing: content-box;
+
+  }

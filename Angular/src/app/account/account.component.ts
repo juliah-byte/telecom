@@ -11,32 +11,38 @@ import { User } from '../models/User';
 export class AccountComponent implements OnInit {
   constructor(private router: Router, private service: AccountService) {}
   bill: number = 0;
+  accountId: number = 0;
   user: User = new User('', '', '', '', '', 0);
 
   accountList : string[][] = [];
-  userList : string[] = [];
+  planList : string[] = [];
+
+
 
   name = sessionStorage.getItem('user');
   
 
 
   ngOnInit(): void {
-    // console.log("Account Page User: " + sessionStorage.getItem('user'));
-    // console.log("Account Page Password: " + sessionStorage.getItem('password')); 
     this.service.getBalance().subscribe((balance) => {
       this.bill = balance;
-      // console.log(this.name + " " + this.bill)
+      
       
     });
 
     this.service.getName().subscribe((data) => {
-      this.userList = data;
-      console.log(this.userList)
+      this.planList = data;
+      console.log(this.planList)
     });
 
     this.service.findDetails().subscribe((data)=>{
       this.accountList = data;
       console.log(this.accountList)
+    });
+
+    this.service.getId().subscribe((data)=>{
+      this.accountId = data
+      console.log(this.accountId)
     });
     
   }

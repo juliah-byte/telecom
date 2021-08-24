@@ -12,27 +12,27 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "user_plan")
+@Table(name = "userplan")
 public class UserPlan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "junc_id")
+	@Column(name = "juncid")
 	int id;
 
 	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	@JoinColumn(name = "userid", insertable = false, updatable = false)
 	private Users user;
 
-	@Column(name = "user_id")
+	@Column(name = "userid")
 	private Long userId;
 
-	@Column(name = "plan_id")
+	@Column(name = "planid")
 	private Long planId;
 
 	@ManyToOne
-	@JoinColumn(name = "plan_id", referencedColumnName = "plan_id", insertable = false, updatable = false)
+	@JoinColumn(name = "planid", referencedColumnName = "planid", insertable = false, updatable = false)
 	private Plan plan;
 
 	/**

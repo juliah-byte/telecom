@@ -1,6 +1,5 @@
 <app-navigation></app-navigation>
-
-  <div class="bg-image"></div>
+<body>
 	<header>
 		<h1> Plans </h1>
 	</header>
@@ -46,11 +45,6 @@
           </svg>
           <span> 1 Line</span>
     </p>
-    <!--Select Basic Plan-->
-    <div text-align="center">
-      <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" (click) = "selectBasic();" />
-    </div>
-    
   </div>
 	
 	<div class="column">
@@ -91,10 +85,6 @@
               </svg>
               <span> 2 Lines</span>
         </p>  
-        <!-- Select Premium Plan -->
-        <div text-align="center">
-          <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" (click) = "selectPremium();" />
-        </div>
 	</div>
   
   <div class="column">
@@ -143,10 +133,48 @@
             <span> 2 Lines</span>
         </p>
         <!-- Select Deluxe Plan -->
-        <div text-align="center">
-          <input class="btn btn-primary mr 1 submit-button" type="button" value="Select Plan" data-toggle="modal" data-target="#exampleModal" (click) = "selectDeluxe();" />
-        </div>
 	</div>
 </section>	
 </div>
-  
+<p></p>
+<div class="flex-container center">
+  <form>
+    <div class="row">
+      <div class ="col-25">
+        <label for="PlanName">Select desired Plan</label>
+      </div>
+      <div class = "col-75">
+        <select id="PlanName" name="Plan">
+          <Option value ="Basic">Basic</Option>
+          <Option value ="Premium">Premium</Option>
+          <Option value ="Deluxe">Deluxe</Option>
+        </select>
+      </div>
+    </div>
+    <div class = "row">
+      <div class= "col-25">
+        <label for="deviceName">Select dersired Device</label>
+      </div>
+        <div class = "col-75">
+          <select id="deviceName" name ="Device">
+            <Option value = "LG-LTE">LG-LTE</Option>
+            <Option value = "I-phone">i-phoneXR</Option>
+            <Option value = "I-phone">i-phone9</Option>
+          </select>
+        </div>
+      <div>
+        <div class = "row">
+          <div class = "col-75">
+            <label for="assignedPhoneNumber" name="phoneNumber">Assigned Phone Number</label>
+          </div>
+        </div>
+        <div class = "col-25">
+          <input type="text">
+        </div>
+      </div>
+    </div>
+    <input
+    class="btn btn-primary mr 1 submit-button" type="submit" value="Submit"/>
+  </form>
+</div>
+</body>  

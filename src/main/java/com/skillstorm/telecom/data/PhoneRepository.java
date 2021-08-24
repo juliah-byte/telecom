@@ -16,14 +16,14 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	
 
-	@Query(value ="select pnumber, device, plan.plan_name "
+	@Query(value ="select pnumber, device, plan.planname "
 			+ "from phones inner join plan "
-			+ "on phones.plan_id = plan.plan_id "
-			+ " inner join user_plan "
-			+ "on plan.plan_id = user_plan.plan_id "
+			+ "on phones.planid = plan.planid "
+			+ " inner join userplan "
+			+ "on plan.planid = userplan.planid "
 			+ " inner join users "
-			+ "on user_plan.user_id = users.user_id "
-			+ "where users.username = :username and users.user_password = :password", nativeQuery=true)
+			+ "on userplan.userid = users.userid "
+			+ "where users.username = :username and userPassword = :password", nativeQuery=true)
 	List<Object> getPhonesByCredentials(@Param("username") String username, @Param("password") String password);
 	
 	
@@ -31,7 +31,7 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	@Modifying
 	@Transactional
-	@Query(value = "insert into phones(pnumber, device, plan_id) values (?1, ?2, ?3)", nativeQuery = true)
+	@Query(value = "insert into phones(pnumber, device, planid) values (?1, ?2, ?3)", nativeQuery = true)
 	void addDevice(String number, String device, int planId);
 	
 	@Query("select p.number from Phone p")

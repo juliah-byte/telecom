@@ -26,15 +26,16 @@ public interface PlanRepository extends JpaRepository<Plan, Long>{
 			+ "where s.username = ?1 and s.user_password = ?2")
 	Plan findPlanByUsernameAndPassword(String Username, String Password);*/
 	
-	@Query(value ="select plan_name, rate\r\n"
+	@Query(value ="select planname, rate\r\n"
 			+ "from plan\r\n"
-			+ "inner join user_plan\r\n"
-			+ "on plan.plan_id = user_plan.plan_id\r\n"
+			+ "inner join userplan\r\n"
+			+ "on plan.planid = userplan.planid\r\n"
 			+ "inner join users\r\n"
-			+ "on user_plan.user_id = users.user_id\r\n"
-			+ "where users.username = 'b' and users.user_password = 'a';", nativeQuery=true)
+			+ "on userplan.userid = users.userid\r\n"
+			+ "where users.username = 'b' and users.userpassword = 'a';", nativeQuery=true)
 	List<Object> findPlanByUsernameAndPassword(String Username, String Password);
 
+	
 
 	
 }

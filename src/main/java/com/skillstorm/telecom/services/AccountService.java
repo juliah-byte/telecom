@@ -17,4 +17,8 @@ public class AccountService {
 		return repository.getBalanceByUser(username);
 	}
 
+	
+	public Long getIdByUser(String username) {
+		return repository.getIdByUser(username);
+	}
 }

@@ -25,10 +25,10 @@ public class Plan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "plan_id")
+	@Column(name = "planid")
 	private Long id;
 	
-	@Column(name = "plan_name")
+	@Column(name = "planname")
 	private String name;
 
 	@Column(name = "rate")
@@ -37,13 +37,13 @@ public class Plan {
 	@Column(name = "minutes")
 	private String minutes;
 
-	@Column(name = "plan_text")
+	@Column(name = "plantext")
 	private String text;
 
 	@Column(name = "international")
 	private String international;
 
-	@Column(name = "plan_data")
+	@Column(name = "plandata")
 	private String data;
 
 
@@ -55,8 +55,9 @@ public class Plan {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Plan(String name, int rate, String minutes, String text, String international, String data,
-			Set<UserPlan> plans) {
+	public Plan(String name, int rate, String minutes, String text, String international, String data)
+	{
+			//Set<UserPlan> plans) {
 		super();
 		this.name = name;
 		this.rate = rate;
@@ -64,7 +65,7 @@ public class Plan {
 		this.text = text;
 		this.international = international;
 		this.data = data;
-		this.userPlans = plans;
+		//this.userPlans = plans;
 	}
 
 	public Long getId() {
@@ -123,13 +124,13 @@ public class Plan {
 		this.data = data;
 	}
 
-	public Set<UserPlan> getPlans() {
+	/**public Set<UserPlan> getPlans() {
 		return userPlans;
-	}
+	}*/
 
-	public void setPlans(Set<UserPlan> plans) {
+	/**public void setPlans(Set<UserPlan> plans) {
 		this.userPlans = plans;
-	}
+	}*/
 
 	@Override
 	public String toString() {

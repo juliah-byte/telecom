@@ -16,8 +16,12 @@ export class AccountService {
 
   url2 = 'http://localhost:62345/user/username/'
 
+ 
+
   username = sessionStorage.getItem('user');
   password = sessionStorage.getItem('password');
+
+  // userId = sessionStorage.setItem()
   
   constructor(private httpClient: HttpClient) { }
 
@@ -35,6 +39,10 @@ export class AccountService {
   getName(): Observable<any>{
     
     return this.httpClient.get<any>(this.url2 + this.username)
+  }
+
+  getId(): Observable<any>{
+     return this.httpClient.get<any>(this.url2+this.username)
   }
 
 }

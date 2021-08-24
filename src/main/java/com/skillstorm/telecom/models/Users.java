@@ -20,22 +20,22 @@ public class Users {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
+	@Column(name = "userid")
 	private Long id;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private Set<UserPlan> userPlans = new HashSet<UserPlan>();
+	/**@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<UserPlan> userPlans = new HashSet<UserPlan>();*/
 
 	@Column(name = "username")
 	private String username;
 
-	@Column(name = "user_password")
+	@Column(name = "userpassword")
 	private String password;
 
-	@Column(name = "first_name")
+	@Column(name = "firstname")
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "lastname")
 	private String lastName;
 
 	@Column(name = "email")
@@ -47,16 +47,19 @@ public class Users {
 	@Column(name = "balance")
 	private Long balance;
 
-	/** @OneToMany(mappedBy = "user") */
-
+	/** @param users 
+	 * @OneToMany(mappedBy = "user") */
+	
+	
 	public Users() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Users(Set<UserPlan> userPlans, String username, String password, String firstName, String lastName,
+	public Users(Long id, String username, String password, String firstName, String lastName,
 			String email, Long lines, Long balance) {
-		this.userPlans = userPlans;
+		super();
+		this.id = id;
+		//this.userPlans = userPlans;
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -74,13 +77,13 @@ public class Users {
 		this.id = id;
 	}
 
-	public Set<UserPlan> getPlans() {
+	/**public Set<UserPlan> getUserPlans() {
 		return userPlans;
-	}
+	}*/
 
-	public void setPlans(Set<UserPlan> userPlans) {
+	/**public void setUserPlans(Set<UserPlan> userPlans) {
 		this.userPlans = userPlans;
-	}
+	}*/
 
 	public String getUsername() {
 		return username;
@@ -118,6 +121,10 @@ public class Users {
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Long getLines() {
 		return lines;
 	}
@@ -134,14 +141,12 @@ public class Users {
 		this.balance = balance;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", lines=" + lines + ", balance=" + balance + "]";
+		return "Users [id=" + id + ", userPlans=" +  ", username=" + username + ", password=" + password
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", lines=" + lines
+				+ ", balance=" + balance + "]";
 	}
 
+	
 }
