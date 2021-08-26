@@ -1,5 +1,8 @@
 package com.skillstorm.telecom.models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "userplan")
@@ -34,6 +39,10 @@ public class UserPlan {
 	@ManyToOne
 	@JoinColumn(name = "planid", referencedColumnName = "planid", insertable = false, updatable = false)
 	private Plan plan;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy="planid", cascade = CascadeType.ALL)
+	private Set<Phone> phones;
 
 	/**
 	 * @Column(name = "phone_id") private int phoneId;

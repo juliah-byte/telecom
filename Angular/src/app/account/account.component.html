@@ -27,14 +27,14 @@
                                           <tr>
                                               <td>
                                                   <table class="invoice-items" cellpadding="0" cellspacing="0">
-                                                      <tbody>
+                                                    <tbody> <!--
                                                         <tr *ngFor ="let a of accountList">
                                                           <td>{{a[0]}}</td>
                                                           <td class="alignright" width> ${{a[1]}}</td>
-                                                      </tr>
+                                                      </tr> -->
                                                       <tr class="total">
-                                                          <td class="alignright" width="140%"> Total ${{bill}}</td>
-                                                          <td class="alignright"></td>
+                                                          <td class="aligncenter" width="140%"> Your total balance is ${{bill}}</td>
+                                                          <td class="aligncenter"></td>
                                                       </tr>
                                                   </tbody></table>
                                               </td>
@@ -62,5 +62,6 @@
       <td></td>
   </tr>
 </tbody></table>
+
 
 

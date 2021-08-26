@@ -47,14 +47,10 @@ public class PlanController {
 	@Autowired
 	private UserRepository repository1;
 
-	@Autowired
-	private PhoneRepository repository2;
+
 
 	@Autowired
 	private PlanService pService;
-	
-	@Autowired
-	private AccountService aService;
 	
 	
 
@@ -62,9 +58,6 @@ public class PlanController {
 
 	}
 
-	//private Logger logger = Logger.getLogger(this.getClass());
-
-	// Plan
 
 	@GetMapping("plan/username/{username}/password/{password}")
 	public ResponseEntity<Object> getPlanByCredentials(@PathVariable String username, @PathVariable String password) {
@@ -82,13 +75,7 @@ public class PlanController {
 	}
 
 
-	// User
-	@GetMapping("/user/username/{username}")
-	public ResponseEntity<Long> setIdbyUsername(@PathVariable String username) {
-		return new ResponseEntity<Long>(aService.getIdByUser(username), HttpStatus.OK);
-	}
-	
-	
+
 	
 	@GetMapping("/user/username/{username}/password/{password}")
 	public ResponseEntity<Users> getIdByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
@@ -126,21 +113,6 @@ public class PlanController {
 		u.setUsername(user.getUsername());
 		return new ResponseEntity<>(pService.addDeluxePlan(u), HttpStatus.OK);
 
-	}
-
-	// Phone
-
-	@GetMapping("/phone/username/{username}/password/{password}")
-	public ResponseEntity<Object> getPhones(@PathVariable String username, @PathVariable String password) {
-		//Log.debug("getPhones method initialized");
-		// System.out.println(repository2.getPhones(username,password));
-		return new ResponseEntity<>(repository2.getPhonesByCredentials(username, password), HttpStatus.OK);
-	}
-
-	@DeleteMapping("/phone/number/{number}")
-	public ResponseEntity<Long> deletePhoneByPhoneNumber(@PathVariable String number) {
-		//Log.debug("deleteByPhone Number intialized");
-		return new ResponseEntity<Long>(repository2.deletePhoneByNumber(number), HttpStatus.NO_CONTENT);
 	}
 
 }

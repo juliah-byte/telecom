@@ -36,6 +36,10 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	@Query("select p.number from Phone p")
 	String[] getPhoneNumbers();
+	
+	@Query("select p. number from Phone p where Users.userid = ?1")
+	Phone getPnumberByUserid(int userid);
+	
 
 	
 
