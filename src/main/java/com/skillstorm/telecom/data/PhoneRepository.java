@@ -32,7 +32,7 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	@Modifying
 	@Transactional
 	@Query(value = "insert into phones(pnumber, device, planid) values (?1, ?2, ?3)", nativeQuery = true)
-	void addDevice(String number, String device, int planId);
+	void addDevice(String number, String device, Long planId);
 	
 	@Query("select p.number from Phone p")
 	String[] getPhoneNumbers();

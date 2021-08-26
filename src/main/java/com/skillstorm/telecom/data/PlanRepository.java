@@ -11,13 +11,13 @@ import org.springframework.stereotype.Repository;
 import com.skillstorm.telecom.models.Plan;
 
 @Repository
-public interface PlanRepository extends JpaRepository<Plan, Long>{
-
-	
+public interface PlanRepository extends JpaRepository<Plan, Long>{	
 
 	@Query("select u from Plan u where u.name = ?1")
 	Plan findByName(String name);
 	
+	@Query("select p.id from Plan p where p.name = :planname")
+	Long findPlanById(String planname);	
 	
 	//Tried to use JPQL for this method, however it required @MappedSuperClass Annotation in Plan class, which inhibited @Enitty
 	/**@Query("select u.rate from Plan u "

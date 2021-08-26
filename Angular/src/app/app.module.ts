@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +15,7 @@ import { PlanTabComponent } from './plan-tab/plan-tab.component';
 import { BillTabComponent } from './bill-tab/bill-tab.component';
 import { DeviceComponent } from './device/device.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //import { BsModalRef } from 'ngx-bootstrap/modal';
 //import { BsModalService } from 'ngx-bootstrap/modal';
@@ -41,6 +41,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     //BsModalService,
     //AppComponent,
     //BsModalRef,
