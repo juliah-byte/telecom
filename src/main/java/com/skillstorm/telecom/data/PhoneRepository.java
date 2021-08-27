@@ -15,6 +15,7 @@ import com.skillstorm.telecom.models.Phone;
 public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	
 	
+	
 
 	@Query(value ="select pnumber, device, plan.planname "
 			+ "from phones inner join plan "
@@ -32,13 +33,16 @@ public interface PhoneRepository extends JpaRepository <Phone, Long> {
 	@Modifying
 	@Transactional
 	@Query(value = "insert into phones(pnumber, device, planid) values (?1, ?2, ?3)", nativeQuery = true)
-	void addDevice(String number, String device, int planId);
+	void addDevice(String number, String device, Long planId);
 	
 	@Query("select p.number from Phone p")
 	String[] getPhoneNumbers();
 	
-	@Query("select p. number from Phone p where Users.userid = ?1")
-	Phone getPnumberByUserid(int userid);
+	@Query("select p from Phone p "
+			+ "join UserPlan up "
+			+ "on p.id = up.phoneid "
+			+ "where up.userId = :userid")
+	Phone getPhoneByUserplan(@Param("userid") Long userid);
 	
 
 	

@@ -12,9 +12,9 @@ public class PhoneService {
 	@Autowired
 	PhoneRepository pRepo;
 	
-	
-	public Phone getPhoneNumberByUser( int userid) {
-		return pRepo.getPnumberByUserid(userid);
+
+	public Phone getPhoneNumberByUser( Long userid) {
+		return pRepo.getPhoneByUserplan(userid);
 	}
 
 }

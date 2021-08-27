@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.telecom.data.PhoneRepository;
+import com.skillstorm.telecom.data.PlanRepository;
 import com.skillstorm.telecom.data.UserRepository;
 import com.skillstorm.telecom.models.Users;
 
@@ -16,6 +17,9 @@ public class PlanService {
 	
 	@Autowired
 	private PhoneRepository pRepository;
+	
+	@Autowired
+	private PlanRepository plRepository;
 
 //	public Users getUserByUsername() {
 //		System.out.println("getUserByUsername reached");
@@ -30,7 +34,7 @@ public class PlanService {
 		String device = "";
 		Long rate = 35L;
 		Long numlines = 1L;
-		System.out.println(u.getUsername());
+		System.out.println("Adding basic plan to user " + u.getUsername());
 		String username = u.getUsername();
 		String[] phoneNumbers = pRepository.getPhoneNumbers();
 		int min, max, first, second, third;
@@ -68,10 +72,12 @@ public class PlanService {
 		int phone = random.nextInt(devices.length);
 		device = devices[phone];
 		
-		Long id = uRepository.getIdByUser(u.getUsername());
-		System.out.println(id);
-		//uRepository.updateUser(numlines, rate, username);
-		pRepository.addDevice(phoneNumber, device, 12);
+		Long userId = uRepository.getIdByUser(u.getUsername());
+		System.out.println("User id: " + userId);
+		Long planId = plRepository.findPlanById("Basic");
+		System.out.println("Plan id: " + planId);
+		uRepository.updateUser(numlines, rate, username);
+		pRepository.addDevice(phoneNumber, device, planId);
 		return 0;
 	}
 	
@@ -148,10 +154,12 @@ public class PlanService {
 		device2 = devices[phone2];
 		
 		Long id = uRepository.getIdByUser(u.getUsername());
-		System.out.println(id);
-		//uRepository.updateUser(numlines, rate, username);
-		pRepository.addDevice(phoneNumber1, device1, 13);
-		pRepository.addDevice(phoneNumber2, device2, 13);		
+		System.out.println("User id: " + id);
+		uRepository.updateUser(numlines, rate, username);
+		Long planId = plRepository.findPlanById("Premium");
+		System.out.println("Plan id: " + planId);
+		pRepository.addDevice(phoneNumber1, device1, planId);
+		pRepository.addDevice(phoneNumber2, device2, planId);
 		return 0;
 	}
 	
@@ -229,9 +237,11 @@ public class PlanService {
 		
 		Long id = uRepository.getIdByUser(u.getUsername());
 		System.out.println(id);
-		//uRepository.updateUser(numlines, rate, username);
-		pRepository.addDevice(phoneNumber1, device1, 14);
-		pRepository.addDevice(phoneNumber2, device2, 14);
+		uRepository.updateUser(numlines, rate, username);
+		Long planId = plRepository.findPlanById("Deluxe");
+		System.out.println("Plan id: " + planId);
+		pRepository.addDevice(phoneNumber1, device1, planId);
+		pRepository.addDevice(phoneNumber2, device2, planId);
 		return 0;
 	}
 

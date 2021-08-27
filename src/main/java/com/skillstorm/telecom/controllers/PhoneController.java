@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.telecom.data.PhoneRepository;
 import com.skillstorm.telecom.models.Phone;
 import com.skillstorm.telecom.services.PhoneService;
 
-@Service
+@RestController
 public class PhoneController {
 	
 	@Autowired
@@ -37,7 +38,7 @@ public class PhoneController {
 
 	
 	@GetMapping("/phone/user/{userid}")
-	public ResponseEntity<Phone> getPhoneNumberByUserID(@PathVariable int userid){
+	public ResponseEntity<Phone> getPhoneNumberByUserID(@PathVariable Long userid){
 		
 		return new ResponseEntity<Phone>(service.getPhoneNumberByUser(userid), HttpStatus.OK);
 	}

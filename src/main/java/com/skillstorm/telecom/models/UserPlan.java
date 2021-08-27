@@ -5,12 +5,14 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -40,14 +42,24 @@ public class UserPlan {
 	@JoinColumn(name = "planid", referencedColumnName = "planid", insertable = false, updatable = false)
 	private Plan plan;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy="planid", cascade = CascadeType.ALL)
+	@Column(name = "phoneid") 
+	private Long phoneid;
+ 
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "phoneid", referencedColumnName = "phoneid", insertable = false, updatable = false)
+	private Phone phone;
+
+	/**@JsonManagedReference
+	@OneToMany(mappedBy="phoneid", cascade = CascadeType.ALL)
 	private Set<Phone> phones;
 
-	/**
-	 * @Column(name = "phone_id") private int phoneId;
-	 * 
-	 * @ManyToOne
+
+	@Column(name = "phone_id") 
+	private int phoneid;
+ 
+	 /* @ManyToOne
 	 * @JoinColumn(name = "phone_id", referencedColumnName = "phone_id",insertable =
 	 *                  false, updatable = false)
 	 */
